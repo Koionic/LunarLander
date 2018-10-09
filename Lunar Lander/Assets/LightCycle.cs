@@ -7,12 +7,22 @@ public class LightCycle : MonoBehaviour
 
     Transform transform;
 
-    Vector3 move = new Vector3(0, 1);
+    [SerializeField]
+    Transform backOfCycle;
+
+    Vector3 move = Vector3.up;
 
     [SerializeField]
     float speed;
 
+    [SerializeField]
+    GameObject trailPrefab;
+
+    GameObject trail;
+
     Vector3 lastTurnPosition;
+
+    bool sideways = false;
    
     private void Awake()
     {
@@ -23,14 +33,17 @@ public class LightCycle : MonoBehaviour
     void Start ()
     {
         lastTurnPosition = transform.position;
+        trail = Instantiate(trailPrefab, lastTurnPosition, Quaternion.identity);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        move = Vector3.up;
+
         transform.Translate(move * speed);
 
-        Debug.DrawLine(transform.position, lastTurnPosition, Color.yellow, 20f);
+        DrawTrail(false);
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -42,32 +55,57 @@ public class LightCycle : MonoBehaviour
         }
 	}
 
+    void DrawTrail(bool turning)
+    {
+        trail.transform.position = (lastTurnPosition + (turning ? transform.position : backOfCycle.position)) / 2;
+
+        trail.transform.localScale = CalculateScale(turning);
+    }
+
+    Vector3 CalculateScale(bool turning)
+    {
+        Debug.Log(transform.rotation.z);
+
+        Vector3 vector;
+        float scale;
+
+        if (sideways)
+        {
+            scale = Mathf.Abs((turning ? transform.position.x : backOfCycle.position.x) - lastTurnPosition.x);
+            vector = new Vector3(scale, .1f, 1);
+        }
+        else
+        {
+            scale = Mathf.Abs((turning ? transform.position.y : backOfCycle.position.y) - lastTurnPosition.y);
+            vector = new Vector3(.1f, scale, 1);
+        }
+
+        return vector;
+    }
+
     void Turn(bool left)
     {
+        transform.Rotate(0, 0, (left ? 90 : -90));
 
-        if (move == Vector3.up)
-        {
-            move = (left ? Vector3.left : Vector3.right);
-        }
-        else if (move == Vector3.down)
-        {
-            move = (left ? Vector3.right : Vector3.left);
-        }
-        else if (move == Vector3.left)
-        {
-            move = (left ? Vector3.down : Vector3.up);
-        }
-        else if (move == Vector3.right)
-        {
-            move = (left ? Vector3.up : Vector3.down);
-        }
+        DrawTrail(true);
 
         lastTurnPosition = transform.position;
+
+        trail = null;
+
+        trail = Instantiate(trailPrefab, lastTurnPosition, Quaternion.identity);
+
+        sideways = (sideways ? false : true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") && other.gameObject != trail)
         Destroy(gameObject);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("meh");
     }
 }

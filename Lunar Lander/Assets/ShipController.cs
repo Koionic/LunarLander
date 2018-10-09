@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class ShipController : MonoBehaviour
 
     [SerializeField]
     GameObject flame;
+
+    [SerializeField]
+    Text xMoveText, yMoveText;
 
     private void Awake()
     {
@@ -40,6 +44,9 @@ public class ShipController : MonoBehaviour
         input = Input.GetAxis("Horizontal");
 
         rb2d.angularVelocity = new Vector3(0, 0, -input);
+
+        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * 4);
+        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -4);
 
         if (Input.GetButton("Fire1"))
         {
