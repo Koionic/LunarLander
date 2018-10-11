@@ -39,16 +39,21 @@ public class ShipController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        //moves the camera to follow the player (will add static camera movement for mulitplayer)
+        mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20);
 
+        //grabs the horizontal inputs from the joystick/keyboard
         input = Input.GetAxis("Horizontal");
 
+        //rotates the ship around its z axis
         rb2d.angularVelocity = new Vector3(0, 0, -input);
 
-        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * 4);
-        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -4);
+        //updates the ui
+        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * 5);
+        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -5);
 
-        if (Input.GetButton("Fire1"))
+        //boosts the rocket in the direction it is facing
+        if (Input.GetButton("Jump"))
         {
             Debug.Log("fire");
             rb2d.AddForce(transform.up * rocketForce);
