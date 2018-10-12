@@ -57,10 +57,13 @@ public class ShipController : MonoBehaviour
         {
             Debug.Log("fire");
             rb2d.AddForce(transform.up * rocketForce);
+
+            if(flame != null)
             flame.SetActive(true);
         }
         else
         {
+            if (flame != null)
             flame.SetActive(false);
         }
 	}
