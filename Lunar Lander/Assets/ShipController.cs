@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShipController : MonoBehaviour
 {
+    
+
     [SerializeField]
     Camera mainCamera;
 
@@ -14,14 +16,20 @@ public class ShipController : MonoBehaviour
 
     float input;
 
-    [SerializeField]
-    float rocketForce;
+    [SerializeField] float rocketForce;
 
-    [SerializeField]
-    GameObject flame;
+    [SerializeField] float landingThresholdRotation = 2f;
+    [SerializeField] float landingThresholdMagnitude = 3f;
 
-    [SerializeField]
-    Text xMoveText, yMoveText;
+    [SerializeField] float velocityUIMultiplier = 5f;
+
+    [SerializeField] float explosionRadius = 5.0F;
+    [SerializeField] float explosionPower = 10.0F;
+
+    [SerializeField] GameObject flame;
+    [SerializeField] GameObject destroyedModel;
+
+    [SerializeField] Text xMoveText, yMoveText;
 
     private void Awake()
     {
@@ -49,13 +57,12 @@ public class ShipController : MonoBehaviour
         rb2d.angularVelocity = new Vector3(0, 0, -input);
 
         //updates the ui
-        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * 5);
-        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -5);
+        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
+        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
         //boosts the rocket in the direction it is facing
         if (Input.GetButton("Jump"))
         {
-            Debug.Log("fire");
             rb2d.AddForce(transform.up * rocketForce);
 
             if(flame != null)
@@ -70,6 +77,42 @@ public class ShipController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Terrain" && Landed(collision))
+            Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
+        if (collision.gameObject.tag == "Terrain" && !Landed(collision))
+            Crash();
+    }
+
+    bool Landed(Collision collision)
+    {
+        if (transform.rotation.z <= landingThresholdRotation && transform.rotation.z >= -landingThresholdRotation && MyMagnitute(collision) <= landingThresholdMagnitude)
+            return true;
+        else
+            return false;
+    }
+
+    float MyMagnitute(Collision collision)
+    {
+        return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
+    }
+
+    void Crash()
+    {
+        Instantiate(destroyedModel, transform.position, transform.rotation);
+        Explosion();
+        Destroy(gameObject);
+    }
+
+    void Explosion()
+    {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if (rb != null)
+                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3.0F);
+        }
     }
 }
