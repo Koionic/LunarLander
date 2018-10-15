@@ -80,7 +80,7 @@ public class ShipController : MonoBehaviour
         if (collision.gameObject.tag == "Terrain" && Landed(collision))
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
-            Crash();
+            Crash(collision);
     }
 
     bool Landed(Collision collision)
@@ -96,14 +96,14 @@ public class ShipController : MonoBehaviour
         return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
     }
 
-    void Crash()
+    void Crash(Collision collision)
     {
         Instantiate(destroyedModel, transform.position, transform.rotation);
-        Explosion();
+        Explosion(collision);
         Destroy(gameObject);
     }
 
-    void Explosion()
+    void Explosion(Collision collision)
     {
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
@@ -112,7 +112,7 @@ public class ShipController : MonoBehaviour
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb != null)
-                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3.0F);
+                rb.AddExplosionForce(explosionPower * MyMagnitute(collision), explosionPos, explosionRadius);
         }
     }
 }
