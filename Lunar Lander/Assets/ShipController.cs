@@ -28,6 +28,7 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] GameObject flame;
     [SerializeField] GameObject destroyedModel;
+    [SerializeField] GameObject explosionCentre;
 
     [SerializeField] Text xMoveText, yMoveText;
 
@@ -105,7 +106,7 @@ public class ShipController : MonoBehaviour
 
     void Explosion(Collision collision)
     {
-        Vector3 explosionPos = transform.position;
+        Vector3 explosionPos = explosionCentre.transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
         foreach (Collider hit in colliders)
         {
