@@ -59,8 +59,8 @@ public class ShipController : MonoBehaviour
         rb2d.angularVelocity = new Vector3(0, 0, -input);
 
         //updates the ui
-        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
-        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
+      //  xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
+       // yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
         //boosts the rocket in the direction it is facing
         if (Input.GetAxis("Throttle" + playerID) > 0f)
@@ -82,7 +82,7 @@ public class ShipController : MonoBehaviour
         if (collision.gameObject.tag == "Terrain" && Landed(collision))
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
-            Crash();
+            Crash(collision);
     }
 
     bool Landed(Collision collision)
@@ -98,23 +98,23 @@ public class ShipController : MonoBehaviour
         return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
     }
 
-    void Crash()
+    void Crash(Collision collision)
     {
         Instantiate(destroyedModel, transform.position, transform.rotation);
-        Explosion();
+        Explosion(collision);
         Destroy(gameObject);
     }
 
-    void Explosion()
+    void Explosion(Collision collision)
     {
-        Vector3 explosionPos = transform.position;
+        Vector3 explosionPos = collision.contacts[0].point;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
         foreach (Collider hit in colliders)
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb != null)
-                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3.0F);
+                rb.AddExplosionForce(explosionPower * collision.relativeVelocity.magnitude, explosionPos, explosionRadius);
         }
     }
 }
