@@ -49,7 +49,7 @@ public class ShipController : MonoBehaviour
 	void Update ()
     {
         //moves the camera to follow the player (will add static camera movement for mulitplayer)
-        mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20);
+        //mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20);
 
         //grabs the horizontal inputs from the joystick/keyboard
         input = Input.GetAxis("Horizontal");
