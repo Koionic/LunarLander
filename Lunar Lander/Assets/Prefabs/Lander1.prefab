@@ -9,21 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1459126085747966}
+  m_RootGameObject: {fileID: 1343360607554624}
   m_IsPrefabAsset: 1
---- !u!1 &1459126085747966
+--- !u!1 &1343360607554624
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4774945436231136}
-  - component: {fileID: 33547629434298484}
-  - component: {fileID: 23729481875363896}
-  - component: {fileID: 54527594377861238}
-  - component: {fileID: 64568576472489772}
-  - component: {fileID: 114233329605574302}
+  - component: {fileID: 4994085035408854}
+  - component: {fileID: 33305994621831072}
+  - component: {fileID: 23312261540428442}
+  - component: {fileID: 54500989538820702}
+  - component: {fileID: 64122112925768392}
+  - component: {fileID: 114728081528330728}
   m_Layer: 0
   m_Name: Lander1
   m_TagString: Untagged
@@ -31,54 +31,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1994456298626724
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4353497964353738}
-  m_Layer: 0
-  m_Name: Explosion Centre
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4353497964353738
+--- !u!4 &4994085035408854
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994456298626724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_GameObject: {fileID: 1343360607554624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.9, y: 7.9935, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4774945436231136}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4774945436231136
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97918475, y: 7.9935, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4353497964353738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23729481875363896
+--- !u!23 &23312261540428442
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
+  m_GameObject: {fileID: 1343360607554624}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -111,19 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33547629434298484
+--- !u!33 &33305994621831072
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
+  m_GameObject: {fileID: 1343360607554624}
   m_Mesh: {fileID: 4300000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
---- !u!54 &54527594377861238
+--- !u!54 &54500989538820702
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
+  m_GameObject: {fileID: 1343360607554624}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0.08
@@ -133,12 +104,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!64 &64568576472489772
+--- !u!64 &64122112925768392
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
+  m_GameObject: {fileID: 1343360607554624}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -147,27 +118,27 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
---- !u!114 &114233329605574302
+--- !u!114 &114728081528330728
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459126085747966}
+  m_GameObject: {fileID: 1343360607554624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838734414b8b6bb4a9752e471e45ff86, type: 3}
+  m_Script: {fileID: 11500000, guid: 13da98e11aef92f47b7e5140ee870015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  playerID: 1
   rocketForce: 1.5
   landingThresholdRotation: 2
   landingThresholdMagnitude: 4
-  velocityUIMultiplier: 5
-  explosionRadius: 10
-  explosionPower: 20
+  velocityUIMultiplier: 10
+  explosionRadius: 5
+  explosionPower: 100
   flame: {fileID: 0}
   destroyedModel: {fileID: 1833268499997678, guid: fb8a2ab4a9b694942bceee77fe3d3871,
     type: 2}
-  explosionCentre: {fileID: 1994456298626724}
   xMoveText: {fileID: 0}
   yMoveText: {fileID: 0}
