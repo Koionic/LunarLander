@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
@@ -49,31 +50,34 @@ public class ShipController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-       /* //moves the camera to follow the player (will add static camera movement for mulitplayer)
-        mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20); */
+        /* //moves the camera to follow the player (will add static camera movement for mulitplayer)
+         mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20); */
 
-        //grabs the horizontal inputs from the joystick/keyboard
-        input = Input.GetAxis("Horizontal" + playerID);
-
-        //rotates the ship around its z axis
-        rb2d.angularVelocity = new Vector3(0, 0, -input);
-
-        //updates the ui
-        xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
-        yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
-
-        //boosts the rocket in the direction it is facing
-        if (Input.GetAxis("Throttle" + playerID) > 0f)
+        if (SceneManager.GetActiveScene().name == "Lunar Lander Blake")
         {
-            rb2d.AddForce(transform.up * rocketForce * Input.GetAxis("Throttle" + playerID));
+            //grabs the horizontal inputs from the joystick/keyboard
+            input = Input.GetAxis("Horizontal" + playerID);
 
-            if(flame != null)
-            flame.SetActive(true);
-        }
-        else
-        {
-            if (flame != null)
-            flame.SetActive(false);
+            //rotates the ship around its z axis
+            rb2d.angularVelocity = new Vector3(0, 0, -input);
+
+            //updates the ui
+            xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
+            yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
+
+            //boosts the rocket in the direction it is facing
+            if (Input.GetAxis("Throttle" + playerID) > 0f)
+            {
+                rb2d.AddForce(transform.up * rocketForce * Input.GetAxis("Throttle" + playerID));
+
+                if (flame != null)
+                    flame.SetActive(true);
+            }
+            else
+            {
+                if (flame != null)
+                    flame.SetActive(false);
+            }
         }
 	}
 
@@ -116,5 +120,15 @@ public class ShipController : MonoBehaviour
             if (rb != null)
                 rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3.0F);
         }
+    }
+
+    public int GetPlayerID()
+    {
+        return playerID;
+    }
+
+    public void SetPlayerID(int id)
+    {
+        playerID = id;
     }
 }
