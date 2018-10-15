@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 14.399994, y: -14.750015}
+  m_AnchoredPosition: {x: 14.400024, y: -14.75}
   m_SizeDelta: {x: 376, y: 24.699997}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &283415218
@@ -807,10 +807,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: Horizontal1
+  m_VerticalAxis: Vertical1
+  m_SubmitButton: Submit1
+  m_CancelButton: Cancel1
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -882,15 +882,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 534669904}
+  playerID: 1
   rocketForce: 1.5
   landingThresholdRotation: 2
   landingThresholdMagnitude: 3
@@ -952,6 +953,64 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+--- !u!1001 &1662525209
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.9935
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+      propertyPath: m_Name
+      value: Lander1 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1813966329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1083,64 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 14.399994, y: -42.35002}
+  m_AnchoredPosition: {x: 14.400024, y: -42.35002}
   m_SizeDelta: {x: 376, y: 24.699997}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &1924270696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6,
+    type: 3}
+  m_PrefabInternal: {fileID: 1662525209}
+--- !u!114 &1924270697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924270696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838734414b8b6bb4a9752e471e45ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 534669904}
+  playerID: 3
+  rocketForce: 1.5
+  landingThresholdRotation: 2
+  landingThresholdMagnitude: 3
+  velocityUIMultiplier: 5
+  explosionRadius: 10
+  explosionPower: 100
+  flame: {fileID: 465121195}
+  destroyedModel: {fileID: 1833268499997678, guid: fb8a2ab4a9b694942bceee77fe3d3871,
+    type: 2}
+  xMoveText: {fileID: 283415219}
+  yMoveText: {fileID: 1813966330}
+--- !u!64 &1924270698
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924270696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: d4e3d3a4e24690244a90e1b9b5cb24c6, type: 3}
+--- !u!54 &1924270699
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924270696}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.08
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 56
+  m_CollisionDetection: 0
