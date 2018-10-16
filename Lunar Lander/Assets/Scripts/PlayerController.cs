@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class PlayerController : MonoBehaviour {
-
-    
+public class PlayerController : MonoBehaviour 
+{
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject[] landers;
+    [SerializeField] TextMeshProUGUI[] playerTexts;
+    [SerializeField] ShipController[] lobbyRoster = new ShipController[4];
 
     ShipController currentShip;
 
     InputController inputController;
-
-    int currentPlayer = 1;
 
     bool[] joystickLoggedIn = new bool[] {false, false, false, false};
 
@@ -33,22 +33,43 @@ public class PlayerController : MonoBehaviour {
 
     void GetPlayers()
     {
-        for (int i = 1; i < 5; i++)
+        for (int shipNum = 1; shipNum < 5; shipNum++)
         {
-            if (inputController.SelectIsPressed(i))
+            if (inputController.SelectIsPressed(shipNum))
             {
                 Debug.Log("pressed");
-                if (joystickLoggedIn[i - 1])
+                if (joystickLoggedIn[shipNum - 1])
                 {
                     Debug.Log("Player is already logged in");
                 }
                 else
                 {
-                    joystickLoggedIn[i - 1] = true;
-                    currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                    currentShip.SetPlayerID(i);
-                    currentPlayer++;
+                    string playerName = "Player " + shipNum + " has joined";
+                    playerTexts[shipNum - 1].text = playerName;
+                    joystickLoggedIn[shipNum - 1] = true;
+                    currentShip = Instantiate(landers[shipNum - 1], spawnPoints[shipNum - 1].position, Quaternion.identity).GetComponent<ShipController>();
+                    currentShip.SetPlayerID(shipNum);
+                    lobbyRoster[shipNum - 1] = currentShip;
                 }
+            }
+
+            if (inputController.CancelIsPressed(shipNum))
+            {
+                if (joystickLoggedIn[shipNum - 1])
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (lobbyRoster[i] != null && lobbyRoster[i].GetPlayerID() == shipNum)
+                        {
+                            playerTexts[i].text = "Press A to join";
+                            joystickLoggedIn[i] = false;
+                            Destroy(lobbyRoster[i].gameObject);
+                            lobbyRoster[i] = null;
+                            break;
+                        }
+                    }
+                }
+
             }
         }
     }

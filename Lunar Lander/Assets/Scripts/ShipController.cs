@@ -58,7 +58,7 @@ public class ShipController : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
-
+            
         }
         else
         {
