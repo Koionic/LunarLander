@@ -10,11 +10,18 @@ public class PlayerController : MonoBehaviour {
 
     ShipController currentShip;
 
+    InputController inputController;
+
     int currentPlayer = 1;
 
-    bool joystick1In, joystick2In, joystick3In, joystick4In;
+    bool[] joystickLoggedIn = new bool[] {false, false, false, false};
 
-	void Start ()
+    private void Awake()
+    {
+        inputController = GetComponent<InputController>();
+    }
+
+    void Start ()
     {
 		
 	}
@@ -26,63 +33,22 @@ public class PlayerController : MonoBehaviour {
 
     void GetPlayers()
     {
-        if (Input.GetButtonDown("Submit1"))
+        for (int i = 1; i < 5; i++)
         {
-            if (joystick1In)
+            if (inputController.SelectIsPressed(i))
             {
-
-            }
-            else
-            {
-                joystick1In = true;
-                currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                currentShip.SetPlayerID(1);
-                currentPlayer++;
-            }
-        }
-
-        if (Input.GetButtonDown("Submit2"))
-        {
-            if (joystick2In)
-            {
-
-            }
-            else
-            {
-                joystick2In = true;
-                currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                currentShip.SetPlayerID(2);
-                currentPlayer++;
-            }
-        }
-
-        if (Input.GetButtonDown("Submit3"))
-        {
-            if (joystick3In)
-            {
-
-            }
-            else
-            {
-                joystick3In = true;
-                currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                currentShip.SetPlayerID(3);
-                currentPlayer++;
-            }
-        }
-
-        if (Input.GetButtonDown("Submit4"))
-        {
-            if (joystick4In)
-            {
-
-            }
-            else
-            {
-                joystick4In = true;
-                currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                currentShip.SetPlayerID(4);
-                currentPlayer++;
+                Debug.Log("pressed");
+                if (joystickLoggedIn[i - 1])
+                {
+                    Debug.Log("Player is already logged in");
+                }
+                else
+                {
+                    joystickLoggedIn[i - 1] = true;
+                    currentShip = Instantiate(landers[currentPlayer - 1], spawnPoints[currentPlayer - 1].position, Quaternion.identity).GetComponent<ShipController>();
+                    currentShip.SetPlayerID(i);
+                    currentPlayer++;
+                }
             }
         }
     }

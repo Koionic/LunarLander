@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698069128}
   - component: {fileID: 698069127}
+  - component: {fileID: 698069129}
   m_Layer: 0
   m_Name: PlayersController
   m_TagString: Untagged
@@ -251,10 +252,10 @@ MonoBehaviour:
   - {fileID: 53220507}
   - {fileID: 1608445997}
   landers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
+  - {fileID: 1114525062718080, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
+  - {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
+  - {fileID: 1114525062718080, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
 --- !u!4 &698069128
 Transform:
   m_ObjectHideFlags: 0
@@ -268,6 +269,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698069129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 698069126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13ce76c0806146fe980ce387e10ee50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &886141880
 Prefab:
   m_ObjectHideFlags: 0
@@ -477,8 +489,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 21e703fc9cb7b894590ae4514c4da4d5,
     type: 3}
   m_PrefabInternal: {fileID: 886141880}
---- !u!64 &1615050183
-MeshCollider:
+--- !u!65 &1615050183
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -486,8 +498,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 21e703fc9cb7b894590ae4514c4da4d5, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.06290705, y: 0.020441983, z: 0.030765124}
+  m_Center: {x: 0.07246772, y: 0.08984297, z: -0.004836572}
