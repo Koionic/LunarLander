@@ -43,10 +43,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("pressed");
                 if (joystickLoggedIn[shipNum - 1])
                 {
-                    Debug.Log("Player is already logged in");
-                    finished = true;
-                    SceneController sceneController = FindObjectOfType<SceneController>();
-                    sceneController.GameScene();
+                    FinishLobby();
                 }
                 else
                 {
@@ -82,7 +79,6 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-
             }
         }
     }
@@ -96,5 +92,32 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
+
+    void FinishLobby()
+    {
+        PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
+
+        int numOfPlayers = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (SlotIsTaken(i))
+            {
+                playerInfo.AssignJoystick(i, lobbyRoster[i].GetPlayerID());
+                numOfPlayers++;
+            }
+            else
+            {
+                playerInfo.AssignJoystick(i, 0);
+            }
+        }
+
+        playerInfo.SetNumberOfPlayers(numOfPlayers);
+
+        finished = true;
+        SceneController sceneController = FindObjectOfType<SceneController>();
+        sceneController.GameScene();
+    }
+
 
 }

@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 1509323380}
   - component: {fileID: 1509323379}
   - component: {fileID: 1509323383}
+  - component: {fileID: 1509323384}
   m_Layer: 0
   m_Name: PlayerInfo
   m_TagString: Untagged
@@ -850,6 +851,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuSceneName: Main Menu
   gameSceneName: Lunar Lander Blake
+--- !u!114 &1509323384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509323378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf981fe6e48eb4c7eb00bd59b1443eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1604686537
 GameObject:
   m_ObjectHideFlags: 0
