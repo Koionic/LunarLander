@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour
 
     InputController inputController;
 
+    bool finished;
+
     bool[] joystickLoggedIn = new bool[] {false, false, false, false};
 
     private void Awake()
     {
-        inputController = GetComponent<InputController>();
+        inputController = FindObjectOfType<InputController>();
     }
 
     void Start ()
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
     {
+        if (!finished)
         GetPlayers();
 	}
 
@@ -41,15 +44,25 @@ public class PlayerController : MonoBehaviour
                 if (joystickLoggedIn[shipNum - 1])
                 {
                     Debug.Log("Player is already logged in");
+                    finished = true;
+                    SceneController sceneController = FindObjectOfType<SceneController>();
+                    sceneController.GameScene();
                 }
                 else
                 {
-                    string playerName = "Player " + shipNum + " has joined";
-                    playerTexts[shipNum - 1].text = playerName;
-                    joystickLoggedIn[shipNum - 1] = true;
-                    currentShip = Instantiate(landers[shipNum - 1], spawnPoints[shipNum - 1].position, Quaternion.identity).GetComponent<ShipController>();
-                    currentShip.SetPlayerID(shipNum);
-                    lobbyRoster[shipNum - 1] = currentShip;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (!SlotIsTaken(i))
+                        {
+                            string playerName = "Player " + shipNum + " has joined";
+                            playerTexts[i].text = playerName;
+                            joystickLoggedIn[shipNum - 1] = true;
+                            currentShip = Instantiate(landers[i], spawnPoints[i].position, Quaternion.identity).GetComponent<ShipController>();
+                            currentShip.SetPlayerID(shipNum);
+                            lobbyRoster[i] = currentShip;
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -59,10 +72,10 @@ public class PlayerController : MonoBehaviour
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        if (lobbyRoster[i] != null && lobbyRoster[i].GetPlayerID() == shipNum)
+                        if (SlotIsTaken(i) && lobbyRoster[i].GetPlayerID() == shipNum)
                         {
                             playerTexts[i].text = "Press A to join";
-                            joystickLoggedIn[i] = false;
+                            joystickLoggedIn[shipNum - 1] = false;
                             Destroy(lobbyRoster[i].gameObject);
                             lobbyRoster[i] = null;
                             break;
@@ -73,4 +86,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    bool SlotIsTaken(int pos)
+    {
+        if (lobbyRoster[pos] != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }

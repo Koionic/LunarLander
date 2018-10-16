@@ -7,8 +7,15 @@ public class InputController : MonoBehaviour
 
     string throttleInputKey, submitKey, cancelKey;
 
+    public bool debugMode;
+
     void Start()
     {
+        if (!debugMode)
+        {
+            Destroy(gameObject);
+        }
+
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
         {
             throttleInputKey = "ThrottleMac";
@@ -57,6 +64,20 @@ public class InputController : MonoBehaviour
     public bool SelectIsPressed(int id)
     {
         return Input.GetButtonDown(submitKey + id);
+    }
+
+    public bool AnySelectIsPressed()
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            if (Input.GetButtonDown(submitKey + i))
+            {
+                return true;
+            }
+        }
+        return false;
+
+            
     }
 
     /// <summary>

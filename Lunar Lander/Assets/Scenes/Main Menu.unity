@@ -382,7 +382,6 @@ GameObject:
   m_Component:
   - component: {fileID: 698069128}
   - component: {fileID: 698069127}
-  - component: {fileID: 698069129}
   m_Layer: 0
   m_Name: PlayersController
   m_TagString: Untagged
@@ -434,17 +433,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &698069129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 698069126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13ce76c0806146fe980ce387e10ee50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &709019969
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +443,7 @@ GameObject:
   - component: {fileID: 709019972}
   - component: {fileID: 709019971}
   - component: {fileID: 709019970}
+  - component: {fileID: 709019973}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -507,6 +496,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709019973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 709019969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13ce76c0806146fe980ce387e10ee50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
 --- !u!1001 &886141880
 Prefab:
   m_ObjectHideFlags: 0
