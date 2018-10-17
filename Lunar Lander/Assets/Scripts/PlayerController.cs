@@ -5,27 +5,31 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour 
 {
+    //the points the players "spawn" in the lobby
     [SerializeField] Transform[] spawnPoints;
+    //the models corresponding to each spawn point
     [SerializeField] GameObject[] landers;
+    //the texts at each lobby slot
     [SerializeField] TextMeshProUGUI[] playerTexts;
+    //the colours the text and models take (possibly)
+    [SerializeField] Color[] playerColours;
+    //the script components assigned to each lander logged in
     [SerializeField] ShipController[] lobbyRoster = new ShipController[4];
 
+    //the script the controller is currently assigning a joystick to
     ShipController currentShip;
 
     InputController inputController;
 
+    //whether or not the lobby is accepting players
     bool finished;
 
     bool[] joystickLoggedIn = new bool[] {false, false, false, false};
 
-    private void Awake()
-    {
-        inputController = FindObjectOfType<InputController>();
-    }
-
     void Start ()
     {
-		
+        inputController = FindObjectOfType<InputController>();
+
 	}
 	
 	void Update ()
@@ -36,26 +40,35 @@ public class PlayerController : MonoBehaviour
 
     void GetPlayers()
     {
+        //for loop that cycles through each joystick number to check inputs
         for (int shipNum = 1; shipNum < 5; shipNum++)
         {
+            
             if (inputController.SelectIsPressed(shipNum))
             {
-                Debug.Log("pressed");
+                //if the player is already logged in, progresses the players to the next scene
                 if (joystickLoggedIn[shipNum - 1])
                 {
                     FinishLobby();
                 }
                 else
                 {
+                    //for loop going through each lobby slot
                     for (int i = 0; i < 4; i++)
                     {
+                        //checks if the slot is empty
                         if (!SlotIsTaken(i))
                         {
-                            string playerName = "Player " + shipNum + " has joined";
-                            playerTexts[i].text = playerName;
+                            //changes the text to display the player number
+                            playerTexts[i].text = "Player " + shipNum + " has joined";
+                            //changes the text colour to the player colour
+                            playerTexts[i].color = playerColours[shipNum];
+                            //changes the bool to declare the joystick has been assigned
                             joystickLoggedIn[shipNum - 1] = true;
+                            //creates a lander at the according lobby slot and assign its shipController to currentShip
                             currentShip = Instantiate(landers[i], spawnPoints[i].position, Quaternion.identity).GetComponent<ShipController>();
                             currentShip.SetPlayerID(shipNum);
+                            //adds the shipController to the lobby
                             lobbyRoster[i] = currentShip;
                             break;
                         }
@@ -65,15 +78,24 @@ public class PlayerController : MonoBehaviour
 
             if (inputController.CancelIsPressed(shipNum))
             {
+                //logs out the player if they are logged in and exits
                 if (joystickLoggedIn[shipNum - 1])
                 {
+                    //for loop that goes through the lobby slots
                     for (int i = 0; i < 4; i++)
                     {
+                        //checks if the landers player id matches the joystick pressing cancel
                         if (SlotIsTaken(i) && lobbyRoster[i].GetPlayerID() == shipNum)
                         {
+                            //changes the text back to normal
                             playerTexts[i].text = "Press A to join";
+                            //changes colour text back to white
+                            playerTexts[i].color = playerColours[0];
+                            //switches the logged in bool back off
                             joystickLoggedIn[shipNum - 1] = false;
+                            //destroys the lander
                             Destroy(lobbyRoster[i].gameObject);
+                            //clears the lobby slot
                             lobbyRoster[i] = null;
                             break;
                         }

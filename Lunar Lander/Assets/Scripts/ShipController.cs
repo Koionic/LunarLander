@@ -117,6 +117,7 @@ public class ShipController : MonoBehaviour
     {
         Instantiate(destroyedModel, transform.position, transform.rotation);
         Explosion(collision);
+        //change to disabling so we can simply reposition and re-enable for respawning
         Destroy(gameObject);
     }
 
