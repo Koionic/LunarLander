@@ -21,14 +21,18 @@ public class SceneController : MonoBehaviour
 
     public void GameScene()
     {
-        loadingScreenController = GetLoadingScreen();
-        loadingScreenController.StartLoadingScreen(gameSceneName);
+        LoadScene(gameSceneName);
     }
 
     public void MainMenu()
     {
+        LoadScene(mainMenuSceneName);
+    }
+
+    void LoadScene(string scene)
+    {
         loadingScreenController = GetLoadingScreen();
-        loadingScreenController.StartLoadingScreen(mainMenuSceneName);
+        loadingScreenController.StartLoadingScreen(scene);
     }
 
     LoadingScreen GetLoadingScreen()

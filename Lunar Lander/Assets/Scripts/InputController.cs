@@ -53,6 +53,7 @@ public class InputController : MonoBehaviour
     public float GetThrottleInput(int id)
     {
         Debug.Log("Grabbing " + throttleInputKey + id);
+        Debug.Log("Player " + id + " - " + Input.GetAxis(throttleInputKey + id));
         return Input.GetAxis(throttleInputKey + id);
     }
 

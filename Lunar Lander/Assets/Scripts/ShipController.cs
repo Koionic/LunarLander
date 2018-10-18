@@ -51,7 +51,7 @@ public class ShipController : MonoBehaviour
 	}
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         /* //moves the camera to follow the player (will add static camera movement for mulitplayer)
          mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -20); */
@@ -78,7 +78,7 @@ public class ShipController : MonoBehaviour
             //boosts the rocket in the direction it is facing
             if (inputController.GetThrottleInput(playerID) > 0f)
             {
-                Debug.Log(inputController.GetThrottleInput(playerID));
+                Debug.Log(playerID + " is thrusting");
                 rb2d.AddForce(transform.up * rocketForce * inputController.GetThrottleInput(playerID));
 
                 if (flame != null)
