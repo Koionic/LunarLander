@@ -1,88 +1,35 @@
 fileFormatVersion: 2
-guid: 0c627d51f25f1b747b2f9fd4cf9e9f55
+guid: 93581ff76fa598449b8c297d32be33ed
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: pCube1
-    100002: pCube2
-    100004: pCube3
-    100006: pCube4
-    100008: pCube5
-    100010: pCube6
-    100012: //RootNode
-    400000: pCube1
-    400002: pCube2
-    400004: pCube3
-    400006: pCube4
-    400008: pCube5
-    400010: pCube6
-    400012: //RootNode
-    2100000: blinn2
+    100000: //RootNode
+    100002: pPyramid1
+    100004: transform1
+    100006: typeMesh1
+    400000: //RootNode
+    400002: pPyramid1
+    400004: transform1
+    400006: typeMesh1
+    2100000: blinn1
     2100002: lambert1
-    2100004: lambert2
-    2100006: lambert4
-    2100008: blinn3
-    2100010: lambert5
-    2100012: lambert6
-    2300000: pCube1
-    2300002: pCube2
-    2300004: pCube3
-    2300006: pCube4
-    2300008: pCube5
-    2300010: pCube6
-    3300000: pCube1
-    3300002: pCube2
-    3300004: pCube3
-    3300006: pCube4
-    3300008: pCube5
-    3300010: pCube6
-    4300000: pCube1
-    4300002: pCube2
-    4300004: pCube3
-    4300006: pCube4
-    4300008: pCube5
-    4300010: pCube6
+    2300000: pPyramid1
+    2300002: typeMesh1
+    3300000: pPyramid1
+    3300002: typeMesh1
+    4300000: typeMesh1
+    4300002: pPyramid1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: blinn2
-    second: {fileID: 2100000, guid: c33376005718ba742afd99acd6268dd8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn3
-    second: {fileID: 2100000, guid: b23fb874a38644a489d82aaa107085b2, type: 2}
+      name: blinn1
+    second: {fileID: 2100000, guid: 4ab54563f6c40f042a2482c36779965a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 30e78d16639ee82468f86aa21dd2b0cf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 832c8a14bf069264db0f5bb7d5ca4a48, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert4
-    second: {fileID: 2100000, guid: e0f5e2a7944d6e444acfea3e229400dd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: 2c88e0c2cea15854196f913b9e3aa1aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert6
-    second: {fileID: 2100000, guid: 894e8a48c7a487f41afac987310035db, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Roadster_Textured
-    second: {fileID: 2800000, guid: 14bd23efa2e198048844365389dd082c, type: 3}
+    second: {fileID: 2100000, guid: 8a45b072953dc4f4fbb3f7286dc15c52, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
