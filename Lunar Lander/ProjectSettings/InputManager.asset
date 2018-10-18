@@ -110,12 +110,12 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.19
+    dead: 0.1
     sensitivity: 1
     snap: 0
-    invert: 0
+    invert: 1
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 1
   - serializedVersion: 3
     m_Name: ThrottleMac1
@@ -142,12 +142,12 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.19
+    dead: 0.1
     sensitivity: 1
     snap: 0
-    invert: 0
+    invert: 1
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 2
   - serializedVersion: 3
     m_Name: ThrottleMac2
@@ -174,12 +174,12 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.19
+    dead: 0.1
     sensitivity: 1
     snap: 0
-    invert: 0
+    invert: 1
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 3
   - serializedVersion: 3
     m_Name: ThrottleMac3
@@ -206,12 +206,12 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.19
+    dead: 0.1
     sensitivity: 1
     snap: 0
-    invert: 0
+    invert: 1
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 4
   - serializedVersion: 3
     m_Name: ThrottleMac4

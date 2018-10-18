@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lunar Lander Blake.unity
     guid: efa975ce6e0e30040bb316549e99bd49
+  - enabled: 1
+    path: Assets/Scenes/Lunar Lander Josh.unity
+    guid: f52fd2c95ce91df49a6c0b3539568019
   m_configObjects: {}
