@@ -668,8 +668,8 @@ MonoBehaviour:
   - {fileID: 53220507}
   - {fileID: 1608445997}
   landers:
-  - {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
-  - {fileID: 1114525062718080, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
+  - {fileID: 1986488441261480, guid: 254d20c4e09bdec4dac2485267c3bd7a, type: 2}
+  - {fileID: 1175239342314536, guid: d5a6a1c91290d3c439ceb19e993df210, type: 2}
   - {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
   - {fileID: 1114525062718080, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
   playerTexts:
@@ -730,10 +730,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal1
-  m_VerticalAxis: Vertical1
-  m_SubmitButton: Submit1
-  m_CancelButton: Cancel1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
