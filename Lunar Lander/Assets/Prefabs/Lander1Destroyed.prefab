@@ -216,6 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4200388324506326}
+  - component: {fileID: 114462818815913900}
   m_Layer: 0
   m_Name: Lander1Destroyed
   m_TagString: Untagged
@@ -1070,3 +1071,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300016, guid: 851cb80e0f35712449cfce8ed6608c3a, type: 3}
+--- !u!114 &114462818815913900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833268499997678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807bfb5613b4a1f4aab52258c6dc92ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

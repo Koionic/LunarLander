@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 33837335245625624}
   - component: {fileID: 23488192014009156}
   - component: {fileID: 54095916043469598}
+  - component: {fileID: 114893415486638036}
   m_Layer: 0
   m_Name: RoadsterDestroyed
   m_TagString: Untagged
@@ -871,6 +872,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.031662643, y: 0.028112736, z: 0.02122446}
   m_Center: {x: -0.011702227, y: 0.006025957, z: -0.007291819}
+--- !u!114 &114893415486638036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560962976795652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807bfb5613b4a1f4aab52258c6dc92ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198025107967669222
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuSceneName: Main Menu
-  gameSceneName: Lunar Lander Josh
+  gameSceneName: Lunar Lander Blake
 --- !u!114 &1509323384
 MonoBehaviour:
   m_ObjectHideFlags: 0

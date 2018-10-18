@@ -24,6 +24,11 @@ public class PlayerInfo : MonoBehaviour
         numberOfPlayers = num;
     }
 
+    public int GetNumberOfPlayers()
+    {
+        return numberOfPlayers;
+    }
+
     public void AssignJoystick(int pos, int id)
     {
         joystickAssignment[pos] = id;
