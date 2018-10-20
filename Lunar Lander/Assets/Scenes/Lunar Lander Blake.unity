@@ -256,6 +256,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114385064782857446, guid: 254d20c4e09bdec4dac2485267c3bd7a,
+        type: 2}
+      propertyPath: fuelMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 254d20c4e09bdec4dac2485267c3bd7a, type: 2}
   m_IsPrefabAsset: 0
@@ -673,6 +678,11 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180711500}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: fuelMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
   m_IsPrefabAsset: 0
@@ -975,6 +985,11 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 496217340}
+    - target: {fileID: 114265432265382006, guid: cab9b5e0d82e44374bd6c1200c6ef920,
+        type: 2}
+      propertyPath: fuelMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
   m_IsPrefabAsset: 0
@@ -1881,6 +1896,11 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 460919006}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: fuelMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
   m_IsPrefabAsset: 0

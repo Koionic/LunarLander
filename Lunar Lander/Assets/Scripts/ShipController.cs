@@ -20,6 +20,10 @@ public class ShipController : MonoBehaviour
 
     float input;
 
+    float fuel = 999f;
+
+    [SerializeField] float fuelMultiplier;
+
     int totalCrashes;
 
     [SerializeField] Renderer landerRenderer;
@@ -98,9 +102,12 @@ public class ShipController : MonoBehaviour
                 yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
             //boosts the rocket in the direction it is facing
-            if (inputController.GetThrottleInput(playerID) > 0f)
+            if (inputController.GetThrottleInput(playerID) > 0f && fuel > 0)
             {
-                rb2d.AddForce(transform.up * rocketForce * inputController.GetThrottleInput(playerID));
+                float thruttleForce = rocketForce * inputController.GetThrottleInput(playerID);
+                rb2d.AddForce(transform.up * thruttleForce);
+
+                fuel -= thruttleForce * Time.deltaTime * fuelMultiplier;
 
                 if (flame != null)
                     flame.SetActive(true);
@@ -139,6 +146,7 @@ public class ShipController : MonoBehaviour
         Instantiate(destroyedModel, transform.position, transform.rotation);
         Explosion(collision);
         isDead = true;
+        totalCrashes++;
 
         gameController.InvokeRespawn(this);
 
