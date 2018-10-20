@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField]
-    Camera mainCamera;
+    [SerializeField] Camera mainCamera;
 
     Rigidbody rb2d;
 
@@ -15,9 +14,17 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] int playerID;
 
+    [SerializeField] Transform spawnPoint;
+
     InputController inputController;
 
     float input;
+
+    int totalCrashes;
+
+    [SerializeField] Renderer landerRenderer;
+
+    Collider landerCollider;
 
     [SerializeField] float rocketForce;
 
@@ -42,12 +49,22 @@ public class ShipController : MonoBehaviour
         transform = GetComponent<Transform>();
 
         inputController = FindObjectOfType<InputController>();
+
+        landerCollider = GetComponent<Collider>();
     }
 
     // Use this for initialization
     void Start ()
     {
+        if (SceneManager.GetActiveScene().name != "Main Menu")
+        {
+            GetJoystickAssignments();
 
+            if(playerID == 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
 	}
 
     // Update is called once per frame
@@ -78,7 +95,6 @@ public class ShipController : MonoBehaviour
             //boosts the rocket in the direction it is facing
             if (inputController.GetThrottleInput(playerID) > 0f)
             {
-                Debug.Log(playerID + " is thrusting");
                 rb2d.AddForce(transform.up * rocketForce * inputController.GetThrottleInput(playerID));
 
                 if (flame != null)
@@ -118,7 +134,10 @@ public class ShipController : MonoBehaviour
         Instantiate(destroyedModel, transform.position, transform.rotation);
         Explosion(collision);
         //change to disabling so we can simply reposition and re-enable for respawning
-        Destroy(gameObject);
+        landerCollider.enabled = false;
+        landerRenderer.enabled = false;
+
+        Invoke("Respawn", 2f);
     }
 
     void Explosion(Collision collision)
@@ -132,6 +151,20 @@ public class ShipController : MonoBehaviour
             if (rb != null)
                 rb.AddExplosionForce(explosionPower * collision.relativeVelocity.magnitude, explosionPos, explosionRadius);
         }
+    }
+
+    void GetJoystickAssignments()
+    {
+        PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
+
+        playerID = playerInfo.GetJoystick(playerID - 1);
+    }
+
+    void Respawn()
+    {
+        transform.position = spawnPoint.position;
+        landerCollider.enabled = true;
+        landerRenderer.enabled = true;
     }
 
     public int GetPlayerID()

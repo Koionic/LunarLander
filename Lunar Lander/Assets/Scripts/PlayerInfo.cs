@@ -33,4 +33,9 @@ public class PlayerInfo : MonoBehaviour
     {
         joystickAssignment[pos] = id;
     }
+
+    public int GetJoystick(int pos)
+    {
+        return joystickAssignment[pos];
+    }
 }
