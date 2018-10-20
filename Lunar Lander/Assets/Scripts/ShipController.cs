@@ -41,6 +41,9 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] Text xMoveText, yMoveText;
 
+    GameController gameController;
+
+    bool isDead = false;
 
     private void Awake()
     {
@@ -58,6 +61,8 @@ public class ShipController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Main Menu")
         {
+            gameController = FindObjectOfType<GameController>();
+
             GetJoystickAssignments();
 
             if(playerID == 0)
@@ -133,11 +138,11 @@ public class ShipController : MonoBehaviour
     {
         Instantiate(destroyedModel, transform.position, transform.rotation);
         Explosion(collision);
-        //change to disabling so we can simply reposition and re-enable for respawning
-        landerCollider.enabled = false;
-        landerRenderer.enabled = false;
+        isDead = true;
 
-        Invoke("Respawn", 2f);
+        gameController.InvokeRespawn(this);
+
+        gameObject.SetActive(false);
     }
 
     void Explosion(Collision collision)
@@ -160,11 +165,14 @@ public class ShipController : MonoBehaviour
         playerID = playerInfo.GetJoystick(playerID - 1);
     }
 
-    void Respawn()
+    public bool IsDead()
     {
-        transform.position = spawnPoint.position;
-        landerCollider.enabled = true;
-        landerRenderer.enabled = true;
+        return isDead;
+    }
+
+    public void Revive()
+    {
+        isDead = false;
     }
 
     public int GetPlayerID()

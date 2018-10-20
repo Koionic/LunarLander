@@ -259,6 +259,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 254d20c4e09bdec4dac2485267c3bd7a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &15030068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1986488441261480, guid: 254d20c4e09bdec4dac2485267c3bd7a,
+    type: 2}
+  m_PrefabInternal: {fileID: 15030067}
 --- !u!1 &66724263
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +676,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &324791002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377,
+    type: 2}
+  m_PrefabInternal: {fileID: 324791001}
 --- !u!1001 &393460654
 Prefab:
   m_ObjectHideFlags: 0
@@ -828,9 +838,10 @@ GameObject:
   m_Component:
   - component: {fileID: 696993605}
   - component: {fileID: 696993604}
+  - component: {fileID: 696993607}
   - component: {fileID: 696993606}
   m_Layer: 0
-  m_Name: Camera Controller
+  m_Name: Game Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,6 +894,28 @@ MonoBehaviour:
   cam3Controller: {fileID: 1747224840}
   cam4Controller: {fileID: 2031710143}
   cam5Controller: {fileID: 5559729}
+--- !u!114 &696993607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696993603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d8ca43cd95e4fa98cd4c25c0f8c553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints:
+  - {fileID: 1799223600}
+  - {fileID: 496217340}
+  - {fileID: 180711500}
+  - {fileID: 460919006}
+  respawnRate: 3
+  players:
+  - {fileID: 15030068}
+  - {fileID: 741681005}
+  - {fileID: 324791002}
+  - {fileID: 1541820924}
 --- !u!1001 &741681004
 Prefab:
   m_ObjectHideFlags: 0
@@ -945,6 +978,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &741681005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1114525062718080, guid: cab9b5e0d82e44374bd6c1200c6ef920,
+    type: 2}
+  m_PrefabInternal: {fileID: 741681004}
 --- !u!1 &803092866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1887,11 @@ Prefab:
 --- !u!4 &1541820923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4994085035408854, guid: 070be2c761c0d0c41a77c8fbc0720377,
+    type: 2}
+  m_PrefabInternal: {fileID: 1541820922}
+--- !u!1 &1541820924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1343360607554624, guid: 070be2c761c0d0c41a77c8fbc0720377,
     type: 2}
   m_PrefabInternal: {fileID: 1541820922}
 --- !u!1 &1562873706

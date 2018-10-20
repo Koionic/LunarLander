@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     void Start ()
     {
         inputController = FindObjectOfType<InputController>();
-
 	}
 	
 	void Update ()
