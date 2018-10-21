@@ -19,21 +19,25 @@ public class PlayerController : MonoBehaviour
     //the script the controller is currently assigning a joystick to
     ShipController currentShip;
 
+    SceneController sceneController;
+
     InputController inputController;
 
     //whether or not the lobby is accepting players
-    bool finished;
+    bool lobby = false;
 
     bool[] joystickLoggedIn = new bool[] {false, false, false, false};
 
     void Start ()
     {
         inputController = FindObjectOfType<InputController>();
+
+        sceneController = FindObjectOfType<SceneController>();
 	}
 	
 	void Update ()
     {
-        if (!finished)
+        if (lobby)
         GetPlayers();
 	}
 
@@ -100,6 +104,12 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    CameraController cameraController = FindObjectOfType<CameraController>();
+                    cameraController.LobbyToMain();
+                    lobby = false;
+                }
             }
         }
     }
@@ -135,10 +145,12 @@ public class PlayerController : MonoBehaviour
 
         playerInfo.SetNumberOfPlayers(numOfPlayers);
 
-        finished = true;
-        SceneController sceneController = FindObjectOfType<SceneController>();
+        lobby = false;
         sceneController.GameScene();
     }
 
-
+    public void SetLobby(bool boolean)
+    {
+        lobby = boolean;
+    }
 }

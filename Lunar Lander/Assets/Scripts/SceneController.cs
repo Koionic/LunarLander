@@ -39,4 +39,10 @@ public class SceneController : MonoBehaviour
     {
         return FindObjectOfType<LoadingScreen>();
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Quitting");
+    }
 }

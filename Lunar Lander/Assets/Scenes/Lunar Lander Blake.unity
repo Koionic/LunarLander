@@ -1191,6 +1191,7 @@ MonoBehaviour:
   cam3Controller: {fileID: 1747224840}
   cam4Controller: {fileID: 2031710143}
   cam5Controller: {fileID: 5559729}
+  mainMenuAnimator: {fileID: 0}
 --- !u!114 &696993607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,7 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13ce76c0806146fe980ce387e10ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  debugMode: 0
 --- !u!1 &1296374080
 GameObject:
   m_ObjectHideFlags: 0
