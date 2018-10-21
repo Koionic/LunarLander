@@ -26,8 +26,6 @@ public class ShipController : MonoBehaviour
 
     int totalCrashes;
 
-    [SerializeField] Renderer landerRenderer;
-
     Collider landerCollider;
 
     [SerializeField] float rocketForce;
