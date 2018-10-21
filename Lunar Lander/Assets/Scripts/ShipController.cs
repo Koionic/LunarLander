@@ -43,7 +43,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] GameObject flame;
     [SerializeField] GameObject destroyedModel;
 
-    [SerializeField] Text xMoveText, yMoveText;
+    [SerializeField] Text xMoveText, yMoveText, fuelText;
 
     GameController gameController;
 
@@ -100,6 +100,9 @@ public class ShipController : MonoBehaviour
 
             if (yMoveText != null)
                 yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
+
+            if (fuelText != null)
+                fuelText.text = "Fuel Remaining: " + fuel;
 
             //boosts the rocket in the direction it is facing
             if (inputController.GetThrottleInput(playerID) > 0f && fuel > 0)

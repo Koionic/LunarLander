@@ -368,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986488441261480}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -13.3, y: 8.78, z: 0}
+  m_LocalPosition: {x: -18.6, y: 12.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062684174805114}
@@ -647,13 +647,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986488441261480}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0.08
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!65 &65748689075576718
 BoxCollider:
@@ -679,8 +679,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  playerID: 3
-  rocketForce: 1.5
+  playerID: 1
+  spawnPoint: {fileID: 0}
+  fuelMultiplier: 0.1
+  landerRenderer: {fileID: 0}
+  rocketForce: 150
   landingThresholdRotation: 2
   landingThresholdMagnitude: 3
   velocityUIMultiplier: 5
@@ -691,6 +694,7 @@ MonoBehaviour:
     type: 2}
   xMoveText: {fileID: 0}
   yMoveText: {fileID: 0}
+  fuelText: {fileID: 0}
 --- !u!198 &198117041259218332
 ParticleSystem:
   m_ObjectHideFlags: 1
