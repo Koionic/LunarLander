@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class CameraController : MonoBehaviour
     Camera playerCam2;
     Camera playerCam3;
     Camera playerCam4;
+
+    [SerializeField] Animator mainMenuAnimator;
 
     bool camera1 = false;
     bool camera2 = false;
@@ -48,37 +51,37 @@ public class CameraController : MonoBehaviour
 
     int playerCount;
 
-    void Awake()
-    {
-        playerInfo = GameObject.Find("PlayerInfo").GetComponent<PlayerInfo>();
-        playerCount = playerInfo.GetNumberOfPlayers();
-
-
-        for (int i = 0; i < 5; i++)
-        {
-            cams[i] = camObjs[i].GetComponent<Camera>();
-        }
-
-        cam1Virtual = cam1Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        cam2Virtual = cam2Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        cam3Virtual = cam3Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        cam4Virtual = cam4Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
-    }
-
     void Start ()
     {
-        AssignCameras();
+        if (SceneManager.GetActiveScene().name != "Main Menu")
+        {
+            playerInfo = GameObject.Find("PlayerInfo").GetComponent<PlayerInfo>();
+            playerCount = playerInfo.GetNumberOfPlayers();
 
-        if (playerCount == 1)
-            OneCamera();
-        if (playerCount == 2)
-            TwoCameras();
-        if (playerCount == 3)
-            ThreeCameras();
-        if (playerCount == 4)
-            FourCameras();
 
-        ClearUnusedCameras();
+            for (int i = 0; i < 5; i++)
+            {
+                cams[i] = camObjs[i].GetComponent<Camera>();
+            }
+
+            cam1Virtual = cam1Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+            cam2Virtual = cam2Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+            cam3Virtual = cam3Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+            cam4Virtual = cam4Controller.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+
+            AssignCameras();
+
+            if (playerCount == 1)
+                OneCamera();
+            if (playerCount == 2)
+                TwoCameras();
+            if (playerCount == 3)
+                ThreeCameras();
+            if (playerCount == 4)
+                FourCameras();
+
+            ClearUnusedCameras();
+        }
     }
 
     void AssignCameras()
@@ -159,5 +162,10 @@ public class CameraController : MonoBehaviour
         {
             rejectedCamera.SetActive(false);
         }
+    }
+
+    public void LobbyToMain()
+    {
+        mainMenuAnimator.Play("Lobby-Main");
     }
 }
