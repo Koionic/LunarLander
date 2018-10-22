@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
-        
+        SortPlayers();
 	}
 	
 	void Update ()
@@ -32,6 +32,15 @@ public class GameController : MonoBehaviour
         respawnQueue.Add(newShip);
 
         Invoke("RespawnLanders", respawnRate);
+    }
+
+    void SortPlayers()
+    {
+        ShipController[] sortingList = FindObjectsOfType<ShipController>();
+        foreach (ShipController player in sortingList)
+        {
+            players[player.GetPlayerID() - 1] = player.gameObject;
+        }
     }
 
     void RespawnLanders()
@@ -47,4 +56,6 @@ public class GameController : MonoBehaviour
             respawnQueue.RemoveAt(0);
         }
     }
+
+
 }
