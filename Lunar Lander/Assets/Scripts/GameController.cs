@@ -19,12 +19,8 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
-<<<<<<< HEAD
-    }
-=======
         SortPlayers();
 	}
->>>>>>> e86e5472823dcd335d0093fc5b0011656afe2246
 	
 	void Update ()
 	{
