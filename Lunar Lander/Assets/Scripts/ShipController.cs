@@ -110,7 +110,7 @@ public class ShipController : MonoBehaviour
                 yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
             if (fuelText != null)
-                fuelText.text = "Fuel Remaining: " + fuel;
+                fuelText.text = "Fuel Remaining: " + (fuel > 0 ? fuel : 0);
 
             if (scoreText != null)
                 scoreText.text = "Score: " + score;
@@ -169,6 +169,7 @@ public class ShipController : MonoBehaviour
         {
             deltaScore *= landingZone.GetMulti();
             landingZone.gameObject.SetActive(false);
+            landingZone = null;
         }
 
         score += deltaScore;

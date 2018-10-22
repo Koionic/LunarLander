@@ -179,6 +179,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SelectButton(GameObject selectable)
+    {
+        eventSystem.SetSelectedGameObject(selectable);
+    }
+
     public void SetLobby(bool boolean)
     {
         lobby = boolean;
@@ -189,6 +194,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!lobby)
-            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+            SelectButton(eventSystem.firstSelectedGameObject);
     }
 }
