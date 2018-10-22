@@ -261,6 +261,21 @@ Prefab:
       propertyPath: rocketForce
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 114385064782857446, guid: 254d20c4e09bdec4dac2485267c3bd7a,
+        type: 2}
+      propertyPath: explosionRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114385064782857446, guid: 254d20c4e09bdec4dac2485267c3bd7a,
+        type: 2}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 881802292}
+    - target: {fileID: 114385064782857446, guid: 254d20c4e09bdec4dac2485267c3bd7a,
+        type: 2}
+      propertyPath: terrainRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 254d20c4e09bdec4dac2485267c3bd7a, type: 2}
   m_IsPrefabAsset: 0
@@ -683,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.6600001, y: 2.3599997, z: -29.9}
+  m_FollowOffset: {x: 0, y: 0, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -853,6 +868,16 @@ Prefab:
         type: 2}
       propertyPath: rocketForce
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 1747224844}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: terrainRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
@@ -1181,8 +1206,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 366.64825, y: 95.924835, z: 1}
-  m_Center: {x: 0, y: 37.962418, z: -30}
+  m_Size: {x: 366.64825, y: 95.924835, z: 25.027355}
+  m_Center: {x: 0, y: 37.962418, z: -17.986322}
 --- !u!4 &696993605
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,6 +1343,16 @@ Prefab:
         type: 2}
       propertyPath: rocketForce
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114265432265382006, guid: cab9b5e0d82e44374bd6c1200c6ef920,
+        type: 2}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 1869707242}
+    - target: {fileID: 114265432265382006, guid: cab9b5e0d82e44374bd6c1200c6ef920,
+        type: 2}
+      propertyPath: terrainRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab9b5e0d82e44374bd6c1200c6ef920, type: 2}
@@ -1469,7 +1504,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 803092866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.960001, y: 42.53, z: -29.9}
+  m_LocalPosition: {x: 28.62, y: 40.17, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1623,6 +1658,7 @@ GameObject:
   - component: {fileID: 881802291}
   - component: {fileID: 881802290}
   - component: {fileID: 881802293}
+  - component: {fileID: 881802292}
   m_Layer: 9
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -1673,13 +1709,31 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 881802289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.52918, y: 42.1165, z: 0.4900066}
+  m_LocalPosition: {x: 16.8, y: 41.07, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 983169224}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &881802292
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 881802289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03c34e8bca18334478779ed35a45b1c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &881802293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,7 +1855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 983169224}
   - component: {fileID: 983169227}
-  - component: {fileID: 983169226}
   - component: {fileID: 983169225}
   m_Layer: 9
   m_Name: cm
@@ -1835,38 +1888,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.2708191, y: 1.0464997, z: 0.4900066}
+  m_FollowOffset: {x: 0, y: 0, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
---- !u!114 &983169226
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 983169223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 10
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.5
-  m_SoftZoneHeight: 0.5
-  m_BiasX: 0
-  m_BiasY: 0
 --- !u!114 &983169227
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2217,7 +2245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.04081562, y: 1.0265002, z: -29.9}
+  m_FollowOffset: {x: 0, y: 0, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2663,7 +2691,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1296374080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.089184, y: 43.4465, z: -29.9}
+  m_LocalPosition: {x: 49.13, y: 42.42, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2873,7 +2901,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377625435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.52918, y: 42.1165, z: -29.5}
+  m_LocalPosition: {x: 16.8, y: 41.07, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3066,6 +3094,16 @@ Prefab:
       propertyPath: rocketForce
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 2031710147}
+    - target: {fileID: 114728081528330728, guid: 070be2c761c0d0c41a77c8fbc0720377,
+        type: 2}
+      propertyPath: terrainRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070be2c761c0d0c41a77c8fbc0720377, type: 2}
   m_IsPrefabAsset: 0
@@ -3121,7 +3159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.040815234, y: 1.0665002, z: -29.9}
+  m_FollowOffset: {x: 0, y: 0, z: -30}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3428,7 +3466,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1619528530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.159187, y: 43.0665, z: -29.9}
+  m_LocalPosition: {x: 38.2, y: 42, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3504,6 +3542,7 @@ GameObject:
   - component: {fileID: 1747224842}
   - component: {fileID: 1747224841}
   - component: {fileID: 1747224843}
+  - component: {fileID: 1747224844}
   m_Layer: 11
   m_Name: CM vcam3
   m_TagString: Untagged
@@ -3554,7 +3593,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747224840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.159187, y: 43.0665, z: -29.9}
+  m_LocalPosition: {x: 38.2, y: 42, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1562873707}
@@ -3577,6 +3616,24 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!95 &1747224844
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747224840}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03c34e8bca18334478779ed35a45b1c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1748117882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4719899406616584, guid: cab9b5e0d82e44374bd6c1200c6ef920,
@@ -3845,6 +3902,7 @@ GameObject:
   - component: {fileID: 1869707240}
   - component: {fileID: 1869707239}
   - component: {fileID: 1869707241}
+  - component: {fileID: 1869707242}
   m_Layer: 10
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -3895,7 +3953,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1869707238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.960001, y: 42.53, z: -29.9}
+  m_LocalPosition: {x: 28.62, y: 40.17, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 232109259}
@@ -3918,6 +3976,24 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!95 &1869707242
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1869707238}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03c34e8bca18334478779ed35a45b1c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1973284950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: a0e4930c7b65141a286176d8d848c25b,
@@ -3986,6 +4062,7 @@ GameObject:
   - component: {fileID: 2031710145}
   - component: {fileID: 2031710144}
   - component: {fileID: 2031710146}
+  - component: {fileID: 2031710147}
   m_Layer: 12
   m_Name: CM vcam4
   m_TagString: Untagged
@@ -4036,7 +4113,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2031710143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.089184, y: 43.4465, z: -29.9}
+  m_LocalPosition: {x: 49.13, y: 42.42, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1149556811}
@@ -4059,6 +4136,24 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!95 &2031710147
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031710143}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03c34e8bca18334478779ed35a45b1c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2040683459
 GameObject:
   m_ObjectHideFlags: 0

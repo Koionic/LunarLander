@@ -45,6 +45,10 @@ public class ShipController : MonoBehaviour
 
     GameController gameController;
 
+    [SerializeField] Animator cameraAnimator;
+    [SerializeField] float terrainRange;
+    bool zoomedIn;
+
     bool isDead = false;
 
     private void Awake()
@@ -91,6 +95,17 @@ public class ShipController : MonoBehaviour
 
             //rotates the ship around its z axis
             rb2d.angularVelocity = new Vector3(0, 0, -input);
+
+            if (IsNearingTerrain() && !zoomedIn)
+            {
+                cameraAnimator.Play("ZoomIn");
+                zoomedIn = true;
+            }
+            else if (!IsNearingTerrain() && zoomedIn)
+            {
+                cameraAnimator.Play("ZoomOut");
+                zoomedIn = false;
+            }
 
             //updates the ui
             if (xMoveText != null)
@@ -140,6 +155,19 @@ public class ShipController : MonoBehaviour
     float MyMagnitute(Collision collision)
     {
         return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
+    }
+
+    bool IsNearingTerrain()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, terrainRange);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Terrain"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void Crash(Collision collision)
