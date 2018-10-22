@@ -18,7 +18,7 @@ public class LoadingScreen : MonoBehaviour
 
     public void StartLoadingScreen(string scene)
     {
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        Debug.Log("LOADING STARTED");
         inputController = FindObjectOfType<InputController>();
         StartCoroutine(Loading(scene));
     }
@@ -43,6 +43,7 @@ public class LoadingScreen : MonoBehaviour
             //async describes 0.9 as fully loaded
             if(async.progress == 0.9f)
             {
+                Debug.Log("Scene is ready");
                 slider.value = 1f;
                 continueText.text = "Press X to continue";
                 //changes the scene when anyone presses select
@@ -50,18 +51,13 @@ public class LoadingScreen : MonoBehaviour
                 {
                     Debug.Log("Scene is loaded");
                     async.allowSceneActivation = true;
+                    loadingScreen.SetActive(false);
                     yield break;
                 }
 
             }
             yield return null;
         }
-    }
-
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-    {
-       
-        loadingScreen.SetActive(false);
     }
 
 }

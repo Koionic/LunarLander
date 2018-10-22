@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     SceneController sceneController;
 
     InputController inputController;
+
+    [SerializeField] Button[] menuButtons;
 
     //whether or not the lobby is accepting players
     bool lobby = false;
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 {
                     CameraController cameraController = FindObjectOfType<CameraController>();
                     cameraController.LobbyToMain();
-                    lobby = false;
+                    SetLobby(false);
                 }
             }
         }
@@ -146,11 +149,16 @@ public class PlayerController : MonoBehaviour
         playerInfo.SetNumberOfPlayers(numOfPlayers);
         
         sceneController.GameScene();
-        lobby = false;
+        SetLobby(false);
     }
 
     public void SetLobby(bool boolean)
     {
         lobby = boolean;
+
+        foreach (Button button in menuButtons)
+        {
+            button.interactable = !boolean;
+        }
     }
 }

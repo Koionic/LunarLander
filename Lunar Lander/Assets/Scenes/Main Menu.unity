@@ -1073,6 +1073,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  menuButtons:
+  - {fileID: 570299082}
+  - {fileID: 1259417068}
 --- !u!4 &698069128
 Transform:
   m_ObjectHideFlags: 0
@@ -1119,8 +1122,8 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 1
-  m_ForceModuleActive: 0
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 1
 --- !u!114 &709019971
 MonoBehaviour:
   m_ObjectHideFlags: 0
