@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
     {
         if (!debugMode)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
@@ -67,13 +67,11 @@ public class InputController : MonoBehaviour
 
     public bool AnySelectIsPressed()
     {
-        for (int i = 1; i < 5; i++)
+        if (Input.GetButtonDown("Submit"))
         {
-            if (Input.GetButtonDown(submitKey + i))
-            {
-                return true;
-            }
+            return true;
         }
+        
         return false;
 
             

@@ -29,6 +29,7 @@ public class LoadingScreen : MonoBehaviour
         loadingScreen.SetActive(true);
         //starts loading the next scene
         async = SceneManager.LoadSceneAsync(scene);
+        Debug.Log("Loading scene");
         //prevents the scene from being activated before it's fully loaded
         async.allowSceneActivation = false;
 
@@ -37,6 +38,7 @@ public class LoadingScreen : MonoBehaviour
             //changes the bar to show loading progress
             slider.value = async.progress;
             continueText.text = "";
+            Debug.Log("Iterating loading...");
 
             //async describes 0.9 as fully loaded
             if(async.progress == 0.9f)
@@ -48,7 +50,9 @@ public class LoadingScreen : MonoBehaviour
                 {
                     Debug.Log("Scene is loaded");
                     async.allowSceneActivation = true;
+                    yield break;
                 }
+
             }
             yield return null;
         }
@@ -56,6 +60,7 @@ public class LoadingScreen : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+       
         loadingScreen.SetActive(false);
     }
 

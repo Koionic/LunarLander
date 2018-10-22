@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             if (inputController.SelectIsPressed(shipNum))
             {
                 //if the player is already logged in, progresses the players to the next scene
-                if (joystickLoggedIn[shipNum - 1])
+                if (joystickLoggedIn[shipNum - 1] && lobby)
                 {
                     FinishLobby();
                 }
@@ -144,9 +144,9 @@ public class PlayerController : MonoBehaviour
         }
 
         playerInfo.SetNumberOfPlayers(numOfPlayers);
-
-        lobby = false;
+        
         sceneController.GameScene();
+        lobby = false;
     }
 
     public void SetLobby(bool boolean)
