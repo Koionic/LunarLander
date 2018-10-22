@@ -46,8 +46,10 @@ public class ShipController : MonoBehaviour
     GameController gameController;
 
     [SerializeField] Animator cameraAnimator;
-    [SerializeField] float terrainRange;
-    bool zoomedIn;
+
+    [SerializeField] float closeTerrainRange, farTerrainRange;
+
+    [SerializeField] bool zoomedIn1, zoomedIn2;
 
     bool isDead = false;
 
@@ -96,16 +98,7 @@ public class ShipController : MonoBehaviour
             //rotates the ship around its z axis
             rb2d.angularVelocity = new Vector3(0, 0, -input);
 
-            if (IsNearingTerrain() && !zoomedIn)
-            {
-                cameraAnimator.Play("ZoomIn");
-                zoomedIn = true;
-            }
-            else if (!IsNearingTerrain() && zoomedIn)
-            {
-                cameraAnimator.Play("ZoomOut");
-                zoomedIn = false;
-            }
+            ManageCamera();
 
             //updates the ui
             if (xMoveText != null)
@@ -157,9 +150,9 @@ public class ShipController : MonoBehaviour
         return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
     }
 
-    bool IsNearingTerrain()
+    bool IsNearingTerrain(bool close)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, terrainRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, close ? closeTerrainRange : farTerrainRange);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("Terrain"))
@@ -168,6 +161,30 @@ public class ShipController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    void ManageCamera()
+    {
+        if (IsNearingTerrain(true) && !zoomedIn2)
+        {
+            cameraAnimator.Play("Med-Close");
+            zoomedIn2 = true;
+        }
+        else if (!IsNearingTerrain(true) && zoomedIn2)
+        {
+            cameraAnimator.Play("Close-Med");
+            zoomedIn2 = false;
+        }
+        else if (IsNearingTerrain(false) && !zoomedIn1)
+        {
+            cameraAnimator.Play("Far-Med");
+            zoomedIn1 = true;
+        }
+        else if (!IsNearingTerrain(false) && zoomedIn1)
+        {
+            cameraAnimator.Play("Med-Far");
+            zoomedIn1 = false;
+        }
     }
 
     void Crash(Collision collision)
