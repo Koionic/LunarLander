@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
 	{
         SortPlayers();
 	}
-
 	
 	void Update ()
 	{
