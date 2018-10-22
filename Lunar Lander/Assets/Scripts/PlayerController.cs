@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         playerInfo.SetNumberOfPlayers(numOfPlayers);
         
         sceneController.GameScene();
-        SetLobby(false);
+        lobby = false;
     }
 
     void AddPlayer(int position, int joystickNum)

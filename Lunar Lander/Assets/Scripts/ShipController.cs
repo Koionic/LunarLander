@@ -20,7 +20,7 @@ public class ShipController : MonoBehaviour
 
     float input;
 
-    float fuel = 999f;
+    float fuel = 999f, score;
 
     [SerializeField] float fuelMultiplier;
 
@@ -41,7 +41,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] GameObject flame;
     [SerializeField] GameObject destroyedModel;
 
-    [SerializeField] Text xMoveText, yMoveText, fuelText;
+    [SerializeField] Text xMoveText, yMoveText, fuelText, scoreText;
 
     GameController gameController;
 
@@ -50,6 +50,8 @@ public class ShipController : MonoBehaviour
     [SerializeField] float closeTerrainRange, farTerrainRange;
 
     [SerializeField] bool zoomedIn1, zoomedIn2;
+
+    LandingZone landingZone;
 
     bool isDead = false;
 
@@ -110,6 +112,9 @@ public class ShipController : MonoBehaviour
             if (fuelText != null)
                 fuelText.text = "Fuel Remaining: " + fuel;
 
+            if (scoreText != null)
+                scoreText.text = "Score: " + score;
+
             //boosts the rocket in the direction it is facing
             if (inputController.GetThrottleInput(playerID) > 0f && fuel > 0)
             {
@@ -132,9 +137,41 @@ public class ShipController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Terrain" && Landed(collision))
+        {
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
+            AddScore();
+        }
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
             Crash(collision);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LZ"))
+        {
+            landingZone = other.GetComponent<LandingZone>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LZ"))
+        {
+            landingZone = null;
+        }
+    }
+
+    void AddScore()
+    {
+        int deltaScore = 50;
+
+        if (landingZone != null)
+        {
+            deltaScore *= landingZone.GetMulti();
+            landingZone.gameObject.SetActive(false);
+        }
+
+        score += deltaScore;
     }
 
     bool Landed(Collision collision)

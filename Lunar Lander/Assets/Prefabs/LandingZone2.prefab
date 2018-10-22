@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33033850572875654}
   - component: {fileID: 23697180124492500}
   - component: {fileID: 65765848415395000}
+  - component: {fileID: 114815109836465660}
   m_Layer: 0
   m_Name: LandingZone2
-  m_TagString: Untagged
+  m_TagString: LZ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833629307167254}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.25, y: 5.43, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -180, y: 2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,3 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.3999996, y: 0.79999995, z: 3.1999998}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114815109836465660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833629307167254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d4b800ddcd0d84281074e867eb527f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 2
+  multiText: {fileID: 0}
+  moveSpeed: 0.005
+  down: 1
+  deltaMove: 0

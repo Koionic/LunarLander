@@ -993,7 +993,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 465629118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -313.49478, y: 20.152714, z: -134.71848}
+  m_LocalPosition: {x: -5.0999985, y: 145.2, z: -318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1386,6 +1386,7 @@ MonoBehaviour:
   - {fileID: 0}
   menuButtons:
   - {fileID: 570299082}
+  - {fileID: 982838482}
   - {fileID: 1259417068}
 --- !u!4 &698069128
 Transform:
@@ -3662,7 +3663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 459914765}
-  m_PathPosition: 0
+  m_PathPosition: 1
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.5
