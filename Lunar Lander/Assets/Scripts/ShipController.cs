@@ -45,6 +45,12 @@ public class ShipController : MonoBehaviour
 
     GameController gameController;
 
+    [SerializeField] Animator cameraAnimator;
+
+    [SerializeField] float closeTerrainRange, farTerrainRange;
+
+    [SerializeField] bool zoomedIn1, zoomedIn2;
+
     bool isDead = false;
 
     private void Awake()
@@ -91,6 +97,8 @@ public class ShipController : MonoBehaviour
 
             //rotates the ship around its z axis
             rb2d.angularVelocity = new Vector3(0, 0, -input);
+
+            ManageCamera();
 
             //updates the ui
             if (xMoveText != null)
@@ -140,6 +148,43 @@ public class ShipController : MonoBehaviour
     float MyMagnitute(Collision collision)
     {
         return (collision.relativeVelocity.magnitude * velocityUIMultiplier);
+    }
+
+    bool IsNearingTerrain(bool close)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, close ? closeTerrainRange : farTerrainRange);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Terrain"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void ManageCamera()
+    {
+        if (IsNearingTerrain(true) && !zoomedIn2)
+        {
+            cameraAnimator.Play("Med-Close");
+            zoomedIn2 = true;
+        }
+        else if (!IsNearingTerrain(true) && zoomedIn2)
+        {
+            cameraAnimator.Play("Close-Med");
+            zoomedIn2 = false;
+        }
+        else if (IsNearingTerrain(false) && !zoomedIn1)
+        {
+            cameraAnimator.Play("Far-Med");
+            zoomedIn1 = true;
+        }
+        else if (!IsNearingTerrain(false) && zoomedIn1)
+        {
+            cameraAnimator.Play("Med-Far");
+            zoomedIn1 = false;
+        }
     }
 
     void Crash(Collision collision)
