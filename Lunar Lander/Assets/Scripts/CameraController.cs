@@ -37,8 +37,8 @@ public class CameraController : MonoBehaviour
     Cinemachine.CinemachineVirtualCamera cam4Virtual;
 
     Rect fullScreen = new Rect (0f,0f,1f,1f);
-    Rect leftHalf = new Rect(-0.5f, 0f, 1f, 1f);
-    Rect rightHalf = new Rect(0.5f, 0f, 1f, 1f);
+    Rect topHalf = new Rect(0f, 0.5f, 1f, 1f);
+    Rect bottomHalf = new Rect(0f, -0.5f, 1f, 1f);
     Rect topLeft = new Rect(-0.5f, 0.5f, 1f, 1f);
     Rect topRight = new Rect(0.5f, 0.5f, 1f, 1f);
     Rect bottomLeft = new Rect(-0.5f, -0.5f, 1f, 1f);
@@ -136,8 +136,8 @@ public class CameraController : MonoBehaviour
 
     void TwoCameras()
     {
-        playerCam1.rect = leftHalf;
-        playerCam2.rect = rightHalf;
+        playerCam1.rect = topHalf;
+        playerCam2.rect = bottomHalf;
     }
 
     void ThreeCameras()
