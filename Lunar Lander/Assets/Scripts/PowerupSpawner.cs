@@ -34,11 +34,16 @@ public class PowerupSpawner : MonoBehaviour
     void SpawnStuff()
     {
 
-        GameObject spawn = spawnLocations[Random.Range(0, itemsToSpawn.Length)];
+        GameObject spawn = spawnLocations[Random.Range(0, spawnLocations.Length)];
 
         GameObject item = itemsToSpawn[Random.Range(0, itemsToSpawn.Length)];
 
-        Instantiate(item, spawn.transform.position, transform.rotation * Quaternion.identity);
+        if (spawn.GetComponentInChildren<PowerupAbility>() != null)
+        {
+            Destroy(spawn.GetComponentInChildren<PowerupAbility>().gameObject);
+        }
+
+        Instantiate(item, spawn.transform.position, transform.rotation * Quaternion.identity, spawn.transform);
         
     }
 
