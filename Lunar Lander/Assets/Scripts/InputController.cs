@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
     {
         if (!debugMode)
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
 
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)

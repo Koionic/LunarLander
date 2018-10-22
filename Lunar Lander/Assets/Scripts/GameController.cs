@@ -39,8 +39,11 @@ public class GameController : MonoBehaviour
         if (respawnQueue[0] != null)
         {
             int respawnNum = respawnQueue[0].GetPlayerID() - 1;
-            players[respawnNum].SetActive(true);
-            players[respawnNum].transform.position = spawnPoints[respawnNum].position;
+            GameObject spawningPlayer = players[respawnNum];
+            spawningPlayer.SetActive(true);
+            spawningPlayer.transform.position = spawnPoints[respawnNum].position;
+            spawningPlayer.transform.rotation = Quaternion.identity;
+            spawningPlayer.GetComponent<Rigidbody>().Sleep();
             respawnQueue.RemoveAt(0);
         }
     }
