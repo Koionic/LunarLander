@@ -6,11 +6,6 @@ TagManager:
   tags:
   - Wall
   - Terrain
-  - powerup
-  - LZ
-  - DoublePoints
-  - Fuel
-  - Shield
   layers:
   - Default
   - TransparentFX

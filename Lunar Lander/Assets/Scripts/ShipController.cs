@@ -20,7 +20,7 @@ public class ShipController : MonoBehaviour
 
     float input;
 
-    float fuel = 999f, score;
+    float fuel = 999f;
 
     [SerializeField] float fuelMultiplier;
 
@@ -41,7 +41,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] GameObject flame;
     [SerializeField] GameObject destroyedModel;
 
-    [SerializeField] Text xMoveText, yMoveText, fuelText, scoreText;
+    [SerializeField] Text xMoveText, yMoveText, fuelText;
 
     GameController gameController;
 
@@ -51,9 +51,7 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] bool zoomedIn1, zoomedIn2;
 
-    LandingZone landingZone;
-
-    bool isDead = false, shielded, doublePoints;
+    bool isDead = false;
 
     private void Awake()
     {
@@ -110,10 +108,7 @@ public class ShipController : MonoBehaviour
                 yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
             if (fuelText != null)
-                fuelText.text = "Fuel Remaining: " + (fuel > 0 ? fuel : 0);
-
-            if (scoreText != null)
-                scoreText.text = "Score: " + score;
+                fuelText.text = "Fuel Remaining: " + fuel;
 
             //boosts the rocket in the direction it is facing
             if (inputController.GetThrottleInput(playerID) > 0f && fuel > 0)
@@ -137,88 +132,9 @@ public class ShipController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Terrain" && Landed(collision))
-        {
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
-            AddScore();
-        }
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
             Crash(collision);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        switch(other.tag)
-        {
-            case ("LZ"):
-                landingZone = other.GetComponent<LandingZone>();
-                return;
-
-            case ("Fuel"):
-                fuel += 100f;
-                Destroy(other.gameObject);
-                return;
-
-            case ("Shield"):
-                EnableShield();
-                return;
-
-            case ("DoublePoints"):
-                EnableDoublePoints();
-                return;
-
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("LZ"))
-        {
-            landingZone = null;
-        }
-    }
-
-    void AddScore()
-    {
-        int deltaScore = 50;
-
-        if (landingZone != null)
-        {
-            deltaScore *= landingZone.GetMulti();
-            landingZone.gameObject.SetActive(false);
-            landingZone = null;
-        }
-
-        if (doublePoints)
-        {
-            deltaScore *= 2;
-        }
-
-        score += deltaScore;
-    }
-
-    void EnableShield()
-    {
-        shielded = true;
-        Invoke("DisableShield", 10f);
-    }
-
-    void DisableShield()
-    {
-        shielded = false;
-        CancelInvoke("DisableShield");
-    }
-
-    void EnableDoublePoints()
-    {
-        doublePoints = true;
-        Invoke("DisableDoublePoints", 10f);
-    }
-
-    void DisableDoublePoints()
-    {
-        doublePoints = false;
-        CancelInvoke("DisableDoublePoints");
     }
 
     bool Landed(Collision collision)
@@ -273,21 +189,14 @@ public class ShipController : MonoBehaviour
 
     void Crash(Collision collision)
     {
-        if (shielded)
-        {
-            DisableShield();
-        }
-        else
-        {
-            Instantiate(destroyedModel, transform.position, transform.rotation);
-            Explosion(collision);
-            isDead = true;
-            totalCrashes++;
+        Instantiate(destroyedModel, transform.position, transform.rotation);
+        Explosion(collision);
+        isDead = true;
+        totalCrashes++;
 
-            gameController.InvokeRespawn(this);
+        gameController.InvokeRespawn(this);
 
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     void Explosion(Collision collision)

@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         playerInfo.SetNumberOfPlayers(numOfPlayers);
         
         sceneController.GameScene();
-        lobby = false;
+        SetLobby(false);
     }
 
     void AddPlayer(int position, int joystickNum)
@@ -179,11 +179,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SelectButton(GameObject selectable)
-    {
-        eventSystem.SetSelectedGameObject(selectable);
-    }
-
     public void SetLobby(bool boolean)
     {
         lobby = boolean;
@@ -194,6 +189,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!lobby)
-            SelectButton(eventSystem.firstSelectedGameObject);
+            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
     }
 }

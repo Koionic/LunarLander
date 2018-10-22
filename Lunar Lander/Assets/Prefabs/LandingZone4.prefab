@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 33012703724279280}
   - component: {fileID: 23460369679944416}
   - component: {fileID: 65467660997091932}
-  - component: {fileID: 114703225900259328}
   m_Layer: 0
   m_Name: LandingZone4
-  m_TagString: LZ
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,19 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.799999, y: 0.79999995, z: 3.1999998}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114703225900259328
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334177640584676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d4b800ddcd0d84281074e867eb527f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 2
-  multiText: {fileID: 0}
-  moveSpeed: 0.005
-  down: 1
-  deltaMove: 0
