@@ -8,6 +8,9 @@ TagManager:
   - Terrain
   - powerup
   - LZ
+  - DoublePoints
+  - Fuel
+  - Shield
   layers:
   - Default
   - TransparentFX

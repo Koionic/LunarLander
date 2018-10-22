@@ -53,7 +53,7 @@ public class ShipController : MonoBehaviour
 
     LandingZone landingZone;
 
-    bool isDead = false;
+    bool isDead = false, shielded, doublePoints;
 
     private void Awake()
     {
@@ -147,10 +147,27 @@ public class ShipController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("LZ"))
+        switch(other.tag)
         {
-            landingZone = other.GetComponent<LandingZone>();
+            case ("LZ"):
+                landingZone = other.GetComponent<LandingZone>();
+                return;
+
+            case ("Fuel"):
+                fuel += 100f;
+                Destroy(other.gameObject);
+                return;
+
+            case ("Shield"):
+                EnableShield();
+                return;
+
+            case ("DoublePoints"):
+                EnableDoublePoints();
+                return;
+
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -172,7 +189,36 @@ public class ShipController : MonoBehaviour
             landingZone = null;
         }
 
+        if (doublePoints)
+        {
+            deltaScore *= 2;
+        }
+
         score += deltaScore;
+    }
+
+    void EnableShield()
+    {
+        shielded = true;
+        Invoke("DisableShield", 10f);
+    }
+
+    void DisableShield()
+    {
+        shielded = false;
+        CancelInvoke("DisableShield");
+    }
+
+    void EnableDoublePoints()
+    {
+        doublePoints = true;
+        Invoke("DisableDoublePoints", 10f);
+    }
+
+    void DisableDoublePoints()
+    {
+        doublePoints = false;
+        CancelInvoke("DisableDoublePoints");
     }
 
     bool Landed(Collision collision)
@@ -227,14 +273,21 @@ public class ShipController : MonoBehaviour
 
     void Crash(Collision collision)
     {
-        Instantiate(destroyedModel, transform.position, transform.rotation);
-        Explosion(collision);
-        isDead = true;
-        totalCrashes++;
+        if (shielded)
+        {
+            DisableShield();
+        }
+        else
+        {
+            Instantiate(destroyedModel, transform.position, transform.rotation);
+            Explosion(collision);
+            isDead = true;
+            totalCrashes++;
 
-        gameController.InvokeRespawn(this);
+            gameController.InvokeRespawn(this);
 
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 
     void Explosion(Collision collision)
