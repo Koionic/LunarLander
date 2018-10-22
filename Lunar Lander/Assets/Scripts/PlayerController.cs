@@ -70,17 +70,7 @@ public class PlayerController : MonoBehaviour
                         //checks if the slot is empty
                         if (!SlotIsTaken(i))
                         {
-                            //changes the text to display the player number
-                            playerTexts[i].text = "Player " + shipNum + " has joined";
-                            //changes the text colour to the player colour
-                            playerTexts[i].color = playerColours[shipNum];
-                            //changes the bool to declare the joystick has been assigned
-                            joystickLoggedIn[shipNum - 1] = true;
-                            //creates a lander at the according lobby slot and assign its shipController to currentShip
-                            currentShip = Instantiate(landers[i], spawnPoints[i].position, Quaternion.identity).GetComponent<ShipController>();
-                            currentShip.SetPlayerID(shipNum);
-                            //adds the shipController to the lobby
-                            lobbyRoster[i] = currentShip;
+                            AddPlayer(i, shipNum);
                             break;
                         }
                     }
@@ -98,22 +88,14 @@ public class PlayerController : MonoBehaviour
                         //checks if the landers player id matches the joystick pressing cancel
                         if (SlotIsTaken(i) && lobbyRoster[i].GetPlayerID() == shipNum)
                         {
-                            //changes the text back to normal
-                            playerTexts[i].text = "Press A to join";
-                            //changes colour text back to white
-                            playerTexts[i].color = playerColours[0];
-                            //switches the logged in bool back off
-                            joystickLoggedIn[shipNum - 1] = false;
-                            //destroys the lander
-                            Destroy(lobbyRoster[i].gameObject);
-                            //clears the lobby slot
-                            lobbyRoster[i] = null;
+                            RemovePlayer(i, shipNum);
                             break;
                         }
                     }
                 }
                 else
                 {
+                    ClearPlayers();
                     CameraController cameraController = FindObjectOfType<CameraController>();
                     cameraController.LobbyToMain();
                     SetLobby(false);
@@ -155,6 +137,46 @@ public class PlayerController : MonoBehaviour
         
         sceneController.GameScene();
         SetLobby(false);
+    }
+
+    void AddPlayer(int position, int joystickNum)
+    {
+        //changes the text to display the player number
+        playerTexts[position].text = "Player " + joystickNum + " has joined";
+        //changes the text colour to the player colour
+        playerTexts[position].color = playerColours[joystickNum];
+        //changes the bool to declare the joystick has been assigned
+        joystickLoggedIn[joystickNum - 1] = true;
+        //creates a lander at the according lobby slot and assign its shipController to currentShip
+        currentShip = Instantiate(landers[position], spawnPoints[position].position, Quaternion.identity).GetComponent<ShipController>();
+        currentShip.SetPlayerID(joystickNum);
+        //adds the shipController to the lobby
+        lobbyRoster[position] = currentShip;
+    }
+
+    void RemovePlayer(int position, int joystickNum)
+    {
+        //changes the text back to normal
+        playerTexts[position].text = "Press A to join";
+        //changes colour text back to white
+        playerTexts[position].color = playerColours[0];
+        //switches the logged in bool back off
+        joystickLoggedIn[joystickNum - 1] = false;
+        //destroys the lander
+        Destroy(lobbyRoster[position].gameObject);
+        //clears the lobby slot
+        lobbyRoster[position] = null;
+    }
+
+    void ClearPlayers()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (SlotIsTaken(i))
+            {
+                RemovePlayer(i, lobbyRoster[i].GetPlayerID());
+            }
+        }
     }
 
     public void SetLobby(bool boolean)
