@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Button[] menuButtons;
 
+    EventSystem eventSystem;
+
     //whether or not the lobby is accepting players
     bool lobby = false;
 
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
         inputController = FindObjectOfType<InputController>();
 
         sceneController = FindObjectOfType<SceneController>();
+
+        eventSystem = FindObjectOfType<EventSystem>();
 	}
 	
 	void Update ()
@@ -160,5 +165,8 @@ public class PlayerController : MonoBehaviour
         {
             button.interactable = !boolean;
         }
+
+        if (!lobby)
+            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
     }
 }
