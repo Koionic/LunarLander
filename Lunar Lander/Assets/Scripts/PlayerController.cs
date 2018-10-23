@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -25,9 +24,7 @@ public class PlayerController : MonoBehaviour
 
     InputController inputController;
 
-    [SerializeField] Button[] menuButtons;
-
-    EventSystem eventSystem;
+    UIController uiController;
 
     //whether or not the lobby is accepting players
     bool lobby = false;
@@ -40,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         sceneController = FindObjectOfType<SceneController>();
 
-        eventSystem = FindObjectOfType<EventSystem>();
+        uiController = FindObjectOfType<UIController>();
 	}
 	
 	void Update ()
@@ -179,21 +176,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SelectButton(GameObject selectable)
-    {
-        eventSystem.SetSelectedGameObject(selectable);
-    }
-
     public void SetLobby(bool boolean)
     {
         lobby = boolean;
 
-        foreach (Button button in menuButtons)
-        {
-            button.interactable = !boolean;
-        }
-
         if (!lobby)
-            SelectButton(eventSystem.firstSelectedGameObject);
+        {
+            uiController.Main();
+        }
     }
 }
