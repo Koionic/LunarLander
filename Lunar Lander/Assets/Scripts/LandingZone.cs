@@ -6,7 +6,7 @@ using TMPro;
 public class LandingZone : MonoBehaviour
 {
 
-    [SerializeField] int multiplier;
+    [SerializeField] float multiplier;
 
     [SerializeField] TextMeshProUGUI multiText;
 
@@ -45,7 +45,7 @@ public class LandingZone : MonoBehaviour
         transform.Translate(vector3 * moveSpeed);
     }
 
-    public int GetMulti()
+    public float GetMulti()
     {
         return multiplier;
     }

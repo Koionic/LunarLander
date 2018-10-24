@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
-
     Rigidbody rb2d;
 
     Transform transform;
@@ -17,6 +15,8 @@ public class ShipController : MonoBehaviour
     [SerializeField] Transform spawnPoint;
 
     InputController inputController;
+
+    AudioManager audioManager;
 
     float input;
 
@@ -49,7 +49,7 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] float closeTerrainRange, farTerrainRange;
 
-    [SerializeField] bool zoomedIn1, zoomedIn2;
+    [SerializeField] bool zoomedIn1, zoomedIn2, outOfFuel;
 
     LandingZone landingZone;
 
@@ -64,12 +64,18 @@ public class ShipController : MonoBehaviour
         inputController = FindObjectOfType<InputController>();
 
         landerCollider = GetComponent<Collider>();
+
+        audioManager = AudioManager.instance;
     }
 
     // Use this for initialization
     void Start ()
     {
-        if (SceneManager.GetActiveScene().name != "Main Menu")
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            flame.SetActive(false);
+        }
+        else
         {
             gameController = FindObjectOfType<GameController>();
 
@@ -110,7 +116,9 @@ public class ShipController : MonoBehaviour
                 yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
 
             if (fuelText != null)
-                fuelText.text = "Fuel Remaining: " + (fuel > 0 ? fuel : 0);
+            {
+                fuelText.text = "Fuel Remaining: " + (fuel > 0 ? (int)fuel : 0);
+            }
 
             if (scoreText != null)
                 scoreText.text = "Score: " + score;
@@ -140,6 +148,7 @@ public class ShipController : MonoBehaviour
         {
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
             AddScore();
+            audioManager.PlaySound("SuccessfulLanding");
         }
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
             Crash(collision);
@@ -154,16 +163,21 @@ public class ShipController : MonoBehaviour
                 return;
 
             case ("Fuel"):
-                fuel += 100f;
+                AddFuel();
                 Destroy(other.gameObject);
+                audioManager.PlaySound("PowerUp");
                 return;
 
             case ("Shield"):
                 EnableShield();
+                Destroy(other.gameObject);
+                audioManager.PlaySound("PowerUp");
                 return;
 
             case ("DoublePoints"):
                 EnableDoublePoints();
+                Destroy(other.gameObject);
+                audioManager.PlaySound("PowerUp");
                 return;
 
         }
@@ -180,7 +194,7 @@ public class ShipController : MonoBehaviour
 
     void AddScore()
     {
-        int deltaScore = 50;
+        float deltaScore = 50;
 
         if (landingZone != null)
         {
@@ -195,6 +209,11 @@ public class ShipController : MonoBehaviour
         }
 
         score += deltaScore;
+    }
+
+    void AddFuel()
+    {
+        fuel += 100;
     }
 
     void EnableShield()
@@ -328,5 +347,10 @@ public class ShipController : MonoBehaviour
     public void SetPlayerID(int id)
     {
         playerID = id;
+    }
+
+    public bool IsOutOfFuel()
+    {
+        return outOfFuel;
     }
 }

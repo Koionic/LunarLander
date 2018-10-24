@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1891,7 +1891,7 @@ MonoBehaviour:
     minDistance3Dsound: 0
     maxDistance3DSound: 0
   - clipName: SuccessfulLanding
-    clip: {fileID: 8300000, guid: 97fc529db2d0c489db738d54aa69b479, type: 3}
+    clip: {fileID: 8300000, guid: f82e705b131d1492a9ae17f8e010cb47, type: 3}
     audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
       type: 2}
     loop: 0
@@ -1930,7 +1930,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 193b47763e10b564e81b4c46b6d79981, type: 3}
     audioMixerGroup: {fileID: 243882176320461390, guid: 22493e7ee308efa4389b399ca6c88e65,
       type: 2}
-    loop: 0
+    loop: 1
     playOnAwake: 0
     oneShot: 0
     volume: 1
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -2532,7 +2532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -3240,7 +3240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -4816,7 +4816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:

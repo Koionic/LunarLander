@@ -10,16 +10,36 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject[] players;
 
+    ShipController[] shipControllers;
+
     List<ShipController> respawnQueue = new List<ShipController>(4);
+
+    AudioManager audioManager;
+
+    PlayerInfo playerInfo;
 
 	void Awake ()
 	{
-		
+        audioManager = AudioManager.instance;
+
+        playerInfo = FindObjectOfType<PlayerInfo>();
+
+        shipControllers = FindObjectsOfType<ShipController>();
 	}
 
 	void Start () 
 	{
         SortPlayers();
+
+        if(playerInfo.GetNumberOfPlayers() > 1)
+        {
+            //play singleplayer song
+        }
+        else
+        {
+            audioManager.PlaySound("MainTheme");
+        }
+
 	}
 	
 	void Update ()
@@ -31,15 +51,22 @@ public class GameController : MonoBehaviour
     {
         respawnQueue.Add(newShip);
 
-        Invoke("RespawnLanders", respawnRate);
+        if (AreAllPlayersOut())
+        {
+
+        }
+        else
+        {
+            Invoke("RespawnLanders", respawnRate);
+        }
     }
 
     void SortPlayers()
     {
-        ShipController[] sortingList = FindObjectsOfType<ShipController>();
-        foreach (ShipController player in sortingList)
+        foreach (ShipController player in shipControllers)
         {
-            players[player.GetPlayerID() - 1] = player.gameObject;
+            if (player.gameObject.activeInHierarchy)
+                players[player.GetPlayerID() - 1] = player.gameObject;
         }
     }
 
@@ -57,5 +84,13 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    bool AreAllPlayersOut()
+    {
+        foreach(ShipController player in shipControllers)
+        {
+            if (!player.IsOutOfFuel())
+                return false;
+        }
+        return true;
+    }
 }

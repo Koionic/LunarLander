@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114580173498557060}
   m_Layer: 0
   m_Name: PowerUp_DoublePoints
-  m_TagString: powerup
+  m_TagString: DoublePoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
