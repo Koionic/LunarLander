@@ -88,6 +88,7 @@ public class GameController : MonoBehaviour
             spawningPlayer.transform.position = spawnPoints[respawnNum].position;
             spawningPlayer.transform.rotation = Quaternion.identity;
             spawningPlayer.GetComponent<Rigidbody>().Sleep();
+            respawnQueue[0].DeGround();
             respawnQueue.RemoveAt(0);
         }
     }

@@ -55,7 +55,7 @@ public class ShipController : MonoBehaviour
 
     ZoneController zoneController;
 
-    bool isDead = false, shielded, doublePoints;
+    bool isDead = false, shielded, doublePoints, grounded;
 
     private void Awake()
     {
@@ -102,7 +102,7 @@ public class ShipController : MonoBehaviour
         {
             
         }
-        else
+        else if (!grounded)
         {
             //grabs the horizontal inputs from the joystick/keyboard
             input = inputController.GetHorizontalInput(playerID);
@@ -135,6 +135,9 @@ public class ShipController : MonoBehaviour
 
                 fuel -= thruttleForce * Time.deltaTime * fuelMultiplier;
 
+                if (fuel <= 0)
+                    outOfFuel = true;
+
                 if (flame != null)
                     flame.SetActive(true);
             }
@@ -148,14 +151,21 @@ public class ShipController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Terrain" && Landed(collision))
+        if ((collision.gameObject.tag == "Terrain") && Landed(collision))
         {
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
-            AddScore();
-            audioManager.PlaySound("SuccessfulLanding");
+            Land();
         }
         if (collision.gameObject.tag == "Terrain" && !Landed(collision))
-            Crash(collision);
+        {   
+            if (shielded)
+            {
+                DisableShield();
+                Land();
+            }
+            else if (!grounded)
+                Crash(collision);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -196,7 +206,7 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    void AddScore()
+    void Land()
     {
         float deltaScore = 50;
 
@@ -206,6 +216,7 @@ public class ShipController : MonoBehaviour
             zoneController.DeactivateSpawn(landingZone.gameObject);
             zoneController.AddZones(1);
             landingZone = null;
+            audioManager.PlaySound("SuccessfulLanding");
         }
 
         if (doublePoints)
@@ -214,6 +225,10 @@ public class ShipController : MonoBehaviour
         }
 
         score += deltaScore;
+
+        grounded = true;
+
+        gameController.InvokeRespawn(this);
     }
 
     void AddFuel()
@@ -332,6 +347,11 @@ public class ShipController : MonoBehaviour
         PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
 
         playerID = playerInfo.GetJoystick(playerID - 1);
+    }
+
+    public void DeGround()
+    {
+        grounded = false;
     }
 
     public bool IsDead()
