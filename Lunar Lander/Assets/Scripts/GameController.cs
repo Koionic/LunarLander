@@ -10,6 +10,10 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject[] players;
 
+    [SerializeField] int startingZoneAmount;
+
+    ZoneController zoneController;
+
     ShipController[] shipControllers;
 
     List<ShipController> respawnQueue = new List<ShipController>(4);
@@ -25,11 +29,15 @@ public class GameController : MonoBehaviour
         playerInfo = FindObjectOfType<PlayerInfo>();
 
         shipControllers = FindObjectsOfType<ShipController>();
+
+        zoneController = FindObjectOfType<ZoneController>();
 	}
 
 	void Start () 
 	{
         SortPlayers();
+
+        zoneController.AddZonesToLimit(startingZoneAmount);
 
         if(playerInfo.GetNumberOfPlayers() > 1)
         {

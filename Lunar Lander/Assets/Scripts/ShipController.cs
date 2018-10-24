@@ -53,6 +53,8 @@ public class ShipController : MonoBehaviour
 
     LandingZone landingZone;
 
+    ZoneController zoneController;
+
     bool isDead = false, shielded, doublePoints;
 
     private void Awake()
@@ -62,6 +64,8 @@ public class ShipController : MonoBehaviour
         transform = GetComponent<Transform>();
 
         inputController = FindObjectOfType<InputController>();
+
+        zoneController = FindObjectOfType<ZoneController>();
 
         landerCollider = GetComponent<Collider>();
 
@@ -199,7 +203,8 @@ public class ShipController : MonoBehaviour
         if (landingZone != null)
         {
             deltaScore *= landingZone.GetMulti();
-            landingZone.gameObject.SetActive(false);
+            zoneController.DeactivateSpawn(landingZone.gameObject);
+            zoneController.AddZones(1);
             landingZone = null;
         }
 

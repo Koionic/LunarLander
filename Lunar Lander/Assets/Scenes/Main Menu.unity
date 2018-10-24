@@ -1902,8 +1902,8 @@ MonoBehaviour:
     spatial: 0
     minDistance3Dsound: 0
     maxDistance3DSound: 0
-  - clipName: Crash (Not Completed)
-    clip: {fileID: 0}
+  - clipName: Crash
+    clip: {fileID: 8300000, guid: bb798557d78814ac399d3ec5b3e69338, type: 3}
     audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
       type: 2}
     loop: 0
