@@ -19,9 +19,13 @@ public class UIController : MonoBehaviour
 
     EventSystem eventSystem;
 
-    private void Awake()
+    AudioManager audioManager;
+
+    void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
+
+        audioManager = AudioManager.instance;
     }
 
     void UpdateUI() 
@@ -44,6 +48,7 @@ public class UIController : MonoBehaviour
         main = false;
         options = true;
         UpdateUI();
+        audioManager.PlaySound("SelectButton");
         eventSystem.SetSelectedGameObject(firstOptionsButton);
     }
 
@@ -51,7 +56,16 @@ public class UIController : MonoBehaviour
     {
         if(!main)
         {
-            camera.Play(options ? "Options-Main" : "Lobby-Main");
+            if (options)
+            {
+                camera.Play("Options-Main");
+                audioManager.PlaySound("SelectButton");
+            }
+            else
+            {
+                camera.Play("Lobby-Main");
+                audioManager.PlaySound("Back");
+            }
         }
         main = true;
         options = false;
@@ -65,5 +79,11 @@ public class UIController : MonoBehaviour
         main = false;
         options = false;
         UpdateUI();
+        audioManager.PlaySound("SelectButton");
+    }
+
+    public void Highlight()
+    {
+        audioManager.PlaySound("ChangeSelect");
     }
 }
