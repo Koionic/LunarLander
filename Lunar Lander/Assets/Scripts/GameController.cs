@@ -51,13 +51,13 @@ public class GameController : MonoBehaviour
     {
         respawnQueue.Add(newShip);
 
-        if (AreAllPlayersOut())
-        {
-
-        }
-        else
+        if (!newShip.IsOutOfFuel())
         {
             Invoke("RespawnLanders", respawnRate);
+        }
+        else if (AreAllPlayersOut())
+        {
+            
         }
     }
 
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     {
         foreach (ShipController player in shipControllers)
         {
-            if (player.gameObject.activeInHierarchy)
+            if (player.gameObject.activeInHierarchy )
                 players[player.GetPlayerID() - 1] = player.gameObject;
         }
     }

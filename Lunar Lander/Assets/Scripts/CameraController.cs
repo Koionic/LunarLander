@@ -90,7 +90,7 @@ public class CameraController : MonoBehaviour
         {
             if (playerInfo.GetJoystick(i) == 0)
             {
-                Debug.Log("Camera " + i + " isnt needed");
+                Debug.Log("Camera " + (i + 1) + " isnt needed");
                 rejectedCameras.Add(camObjs[i]);
             }
             else
