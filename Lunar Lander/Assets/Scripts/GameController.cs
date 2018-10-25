@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] int startingZoneAmount;
 
+    [SerializeField] float startVelocity;
+
     ZoneController zoneController;
 
     ShipController[] shipControllers;
@@ -86,8 +88,10 @@ public class GameController : MonoBehaviour
             GameObject spawningPlayer = players[respawnNum];
             spawningPlayer.SetActive(true);
             spawningPlayer.transform.position = spawnPoints[respawnNum].position;
-            spawningPlayer.transform.rotation = Quaternion.identity;
-            spawningPlayer.GetComponent<Rigidbody>().Sleep();
+            spawningPlayer.transform.rotation = Quaternion.Euler(0,0,90);
+            Rigidbody spawningPlayerRB = spawningPlayer.GetComponent<Rigidbody>();
+            spawningPlayerRB.Sleep();
+            spawningPlayerRB.AddForce(Vector3.right * startVelocity, ForceMode.Impulse);
             respawnQueue[0].DeGround();
             respawnQueue.RemoveAt(0);
         }

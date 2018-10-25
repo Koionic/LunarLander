@@ -31,6 +31,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1349413986510842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4220844078886640}
+  m_Layer: 0
+  m_Name: GroundTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1433882268632164
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,6 +63,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4220844078886640
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349413986510842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.053, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4854119335075798}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4854119335075798
 Transform:
   m_ObjectHideFlags: 1
@@ -55,10 +83,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272626715911888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.62, y: 40.17, z: 0}
+  m_LocalPosition: {x: 18.586552, y: 38.740173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4960662153638458}
+  - {fileID: 4220844078886640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -199,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13da98e11aef92f47b7e5140ee870015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   playerID: 2
   spawnPoint: {fileID: 0}
   fuelMultiplier: 0.1
@@ -215,8 +243,11 @@ MonoBehaviour:
   xMoveText: {fileID: 0}
   yMoveText: {fileID: 0}
   fuelText: {fileID: 0}
+  scoreText: {fileID: 0}
   cameraAnimator: {fileID: 0}
   closeTerrainRange: 5
   farTerrainRange: 10
   zoomedIn1: 1
   zoomedIn2: 0
+  outOfFuel: 0
+  groundTransform: {fileID: 4220844078886640}

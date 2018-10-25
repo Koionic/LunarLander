@@ -57,6 +57,8 @@ public class ShipController : MonoBehaviour
 
     bool isDead = false, shielded, doublePoints, grounded;
 
+    [SerializeField] Transform groundTransform;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody>();
@@ -151,7 +153,7 @@ public class ShipController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.tag == "Terrain") && Landed(collision))
+      /*  if ((collision.gameObject.tag == "Terrain") && Landed(collision))
         {
             Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
             Land();
@@ -165,6 +167,31 @@ public class ShipController : MonoBehaviour
             }
             else if (!grounded)
                 Crash(collision);
+        } */
+
+        switch (collision.gameObject.tag)
+        {
+            case ("Terrain"):
+                if(Landed(collision))
+                {
+                    Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
+                    Land();
+                }
+                else
+                {
+                    if (shielded)
+                    {
+                        DisableShield();
+                        Land();
+                    }
+                    else if (!grounded)
+                        Crash(collision);
+                }
+                return;
+
+            case ("TreeRock"):
+                Crash(collision);
+                return;
         }
     }
 
@@ -263,8 +290,10 @@ public class ShipController : MonoBehaviour
     bool Landed(Collision collision)
     {
         if (transform.rotation.z <= landingThresholdRotation && transform.rotation.z >= -landingThresholdRotation && MyMagnitute(collision) <= landingThresholdMagnitude)
-            return true;
-        else
+        {
+            if(collision.contacts[0].point.y < groundTransform.position.y)
+                return true;
+        }
             return false;
     }
 
