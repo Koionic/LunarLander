@@ -9,6 +9,8 @@ public class PlayerInfo : MonoBehaviour
 
     int[] joystickAssignment = new int[4];
 
+    public Color[] playerColours;
+
 	void Start () 
     {
 		

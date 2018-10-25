@@ -84,6 +84,11 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void EndScreenCamera()
+    {
+        playerCam1.rect = fullScreen;
+    }
+
     void AssignCameras()
     {
         for (int i = 0; i < 4; i++)

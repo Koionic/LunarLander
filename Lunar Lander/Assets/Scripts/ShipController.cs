@@ -23,6 +23,8 @@ public class ShipController : MonoBehaviour
 
     float fuel = 999f, score;
 
+    public bool isAssigned;
+
     [SerializeField] float fuelMultiplier;
 
     int totalCrashes;
@@ -95,6 +97,7 @@ public class ShipController : MonoBehaviour
             else
             {
                 gameController.InvokeRespawn(this, 0f);
+                isAssigned = true;
             }
         }
 	}
@@ -369,8 +372,6 @@ public class ShipController : MonoBehaviour
             totalCrashes++;
 
             gameController.InvokeRespawn(this);
-
-            gameObject.SetActive(false);
         }
     }
 
@@ -427,5 +428,10 @@ public class ShipController : MonoBehaviour
     public bool IsOutOfFuel()
     {
         return outOfFuel;
+    }
+
+    public float GetScore()
+    {
+        return score;
     }
 }

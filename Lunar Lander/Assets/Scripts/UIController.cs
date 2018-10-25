@@ -24,8 +24,12 @@ public class UIController : MonoBehaviour
     void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
-
         audioManager = AudioManager.instance;
+    }
+
+    private void Start()
+    {
+        eventSystem = FindObjectOfType<EventSystem>();
     }
 
     void UpdateUI() 
@@ -85,6 +89,11 @@ public class UIController : MonoBehaviour
     public void Highlight(GameObject firstSelected)
     {
         eventSystem.SetSelectedGameObject(firstSelected);
+        audioManager.PlaySound("ChangeSelect");
+    }
+
+    public void PlayHighlightSound()
+    {
         audioManager.PlaySound("ChangeSelect");
     }
 }

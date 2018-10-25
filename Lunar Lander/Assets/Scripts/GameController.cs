@@ -30,15 +30,19 @@ public class GameController : MonoBehaviour
 
     UIController uiController;
 
-    [SerializeField] GameObject pauseMenu, victoryScreen, firstPauseButton;
+    SceneController sceneController;
 
-    bool finished, paused;
+    [SerializeField] GameObject pauseMenu, endScreen, firstPauseButton, firstGameOverButton;
+
+    public bool finished, paused;
 
 	void Awake ()
 	{
         audioManager = AudioManager.instance;
 
         playerInfo = FindObjectOfType<PlayerInfo>();
+
+        sceneController = FindObjectOfType<SceneController>();
 
         shipControllers = FindObjectsOfType<ShipController>();
 
@@ -79,6 +83,8 @@ public class GameController : MonoBehaviour
     {
         respawnQueue.Add(newShip);
 
+        newShip.gameObject.SetActive(false);
+
         if (newShip.IsOutOfFuel())
         {
             cameraController.SetZoomedCamera(newShip.GetPlayerID());
@@ -97,6 +103,8 @@ public class GameController : MonoBehaviour
     public void InvokeRespawn(ShipController newShip, float respawnTime)
     {
         respawnQueue.Add(newShip);
+
+        newShip.gameObject.SetActive(false);
 
         if (newShip.IsOutOfFuel())
         {
@@ -117,7 +125,7 @@ public class GameController : MonoBehaviour
     {
         foreach (ShipController player in shipControllers)
         {
-            if (player.gameObject.activeInHierarchy )
+            if (player.gameObject.activeInHierarchy)
                 players[player.GetJoystickID() - 1] = player.gameObject;
         }
     }
@@ -142,16 +150,86 @@ public class GameController : MonoBehaviour
     void FinishGame()
     {
         finished = true;
+
+        cameraController.EndScreenCamera();
+
+        endScreen.SetActive(true);
+
+        endScreen.GetComponent<EndScreen>().ChangeTexts();
+
+        uiController = FindObjectOfType<UIController>();
+
+        uiController.Highlight(firstGameOverButton);
     }
 
     bool AreAllPlayersOut()
     {
         foreach(ShipController player in shipControllers)
         {
-            if (!player.IsOutOfFuel())
+            if (player.isAssigned)
+            {
+                if (!player.IsOutOfFuel() || player.gameObject.activeInHierarchy)
                 return false;
+            }
         }
         return true;
+    }
+
+    public string[] GrabScores()
+    {
+        float[] scores = new float[4];
+
+        float[] scoreboard = new float[4];
+
+        string[] scoreBoardTexts = new string [4];
+
+        for (int possibleScore = 0; possibleScore < 4; possibleScore++)
+        {
+            ShipController currentShip = players[possibleScore].GetComponent<ShipController>();
+
+            scores[possibleScore] = currentShip.GetScore();
+
+            for (int currentScore = 0; currentScore < 4; currentScore++)
+            {
+                if (currentShip.GetPlayerID() == 0)
+                {
+                    scoreBoardTexts[currentScore] = "";
+                }
+                else
+                {
+                    if (scores[possibleScore] > scoreboard[currentScore])
+                    {
+                        for (int i = 3; i > currentScore; i--)
+                        {
+                            scoreboard[i] = scoreboard[i - 1];
+                            scoreBoardTexts[i] = scoreBoardTexts[i - 1];
+                        }
+
+                        scoreboard[currentScore] = scores[possibleScore];
+
+                        scoreBoardTexts[currentScore] = "Player " + (possibleScore + 1) + ": " + scoreboard[currentScore];
+
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return scoreBoardTexts;
+
+    }
+
+    public void RestartGame()
+    {
+        sceneController.GameScene();
+    }
+
+    public void LeaveGame()
+    {
+        TogglePause();
+        sceneController.MainMenu();
+        endScreen.SetActive(false);
     }
 
     public void TogglePause()
@@ -162,7 +240,7 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
         }
-        else
+        else if (!finished)
         {
             paused = true;
             Time.timeScale = 0f;

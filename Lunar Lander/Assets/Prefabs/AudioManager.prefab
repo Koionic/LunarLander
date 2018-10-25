@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4315245570057602}
   - component: {fileID: 114991386938457124}
+  - component: {fileID: 114264345867458344}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114264345867458344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007927351100752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b75a396828967e469cd698a845c18cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 22493e7ee308efa4389b399ca6c88e65, type: 2}
+  muteToggle: {fileID: 0}
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
 --- !u!114 &114991386938457124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,4 +177,4 @@ MonoBehaviour:
     spatial: 0
     minDistance3Dsound: 0
     maxDistance3DSound: 0
-  isMuted: 0
+  muted: 0

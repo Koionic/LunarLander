@@ -332,6 +332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 2
   spawnPoint: {fileID: 0}
+  fuel: 3
+  score: 700
+  isAssigned: 0
   fuelMultiplier: 0.1
   rocketForce: 150
   landingThresholdRotation: 2

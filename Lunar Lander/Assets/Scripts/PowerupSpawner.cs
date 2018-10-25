@@ -26,8 +26,9 @@ public class PowerupSpawner : MonoBehaviour
 
 	void Start ()
     {
-
-        InvokeRepeating("SpawnStuff", secondsBeforeSpawningItems, spawnRateInSeconds);
+        PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
+        if (playerInfo != null && playerInfo.GetNumberOfPlayers() > 1)
+            InvokeRepeating("SpawnStuff", secondsBeforeSpawningItems, spawnRateInSeconds);
 
     }
 

@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         //changes the text to display the player number
         playerTexts[position].text = "Player " + (position + 1) + " has joined";
         //changes the text colour to the player colour
-        playerTexts[position].color = playerColours[joystickNum];
+        playerTexts[position].color = playerColours[position + 1];
         //changes the bool to declare the joystick has been assigned
         joystickLoggedIn[joystickNum - 1] = true;
         //creates a lander at the according lobby slot and assign its shipController to currentShip
