@@ -92,6 +92,8 @@ public class ShipController : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
+
+            gameController.InvokeRespawn(this, 0f);
         }
 	}
 

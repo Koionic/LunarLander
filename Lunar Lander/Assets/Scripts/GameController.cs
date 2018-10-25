@@ -57,11 +57,6 @@ public class GameController : MonoBehaviour
         {
             audioManager.PlaySound("MainTheme");
         }
-
-        for (int i = 1; i < playerInfo.GetNumberOfPlayers(); i++)
-        {
-            RespawnLanders();
-        }
 	}
 	
 	void Update ()
@@ -85,6 +80,25 @@ public class GameController : MonoBehaviour
         else
         {
             Invoke("RespawnLanders", respawnRate);
+        }
+    }
+
+    public void InvokeRespawn(ShipController newShip, float respawnTime)
+    {
+        respawnQueue.Add(newShip);
+
+        if (newShip.IsOutOfFuel())
+        {
+            cameraController.SetZoomedCamera(newShip.GetPlayerID());
+            respawnQueue.Remove(newShip);
+            if (AreAllPlayersOut())
+            {
+                FinishGame();
+            }
+        }
+        else
+        {
+            Invoke("RespawnLanders", respawnTime);
         }
     }
 
