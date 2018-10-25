@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour 
+public class GameController : MonoBehaviour
 {
     [SerializeField] Transform[] spawnPoints;
 
@@ -25,6 +25,10 @@ public class GameController : MonoBehaviour
     PlayerInfo playerInfo;
 
     CameraController cameraController;
+
+    [SerializeField] GameObject pauseMenu, victoryScreen;
+
+    bool finished;
 
 	void Awake ()
 	{
@@ -54,6 +58,10 @@ public class GameController : MonoBehaviour
             audioManager.PlaySound("MainTheme");
         }
 
+        for (int i = 1; i < playerInfo.GetNumberOfPlayers(); i++)
+        {
+            RespawnLanders();
+        }
 	}
 	
 	void Update ()
@@ -69,6 +77,10 @@ public class GameController : MonoBehaviour
         {
             cameraController.SetZoomedCamera(newShip.GetPlayerID());
             respawnQueue.Remove(newShip);
+            if (AreAllPlayersOut())
+            {
+                FinishGame();
+            }
         }
         else
         {
@@ -100,6 +112,11 @@ public class GameController : MonoBehaviour
             respawnQueue[0].DeGround();
             respawnQueue.RemoveAt(0);
         }
+    }
+
+    void FinishGame()
+    {
+        finished = true;
     }
 
     bool AreAllPlayersOut()
