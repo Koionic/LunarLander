@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
 	{
 		if (inputController.PauseIsPressed())
         {
-            
+            TogglePause();
         }
 	}
 
@@ -126,7 +126,7 @@ public class GameController : MonoBehaviour
     {
         if (respawnQueue[0] != null)
         {
-            int respawnNum = respawnQueue[0].GetJoystickID() - 1;
+            int respawnNum = respawnQueue[0].GetPlayerID() - 1;
             GameObject spawningPlayer = players[respawnNum];
             spawningPlayer.SetActive(true);
             spawningPlayer.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
@@ -154,20 +154,20 @@ public class GameController : MonoBehaviour
         return true;
     }
 
-    private void Pause()
+    public void TogglePause()
     {
         if (paused)
         {
             paused = false;
             Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
         }
         else
         {
             paused = true;
             Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
             uiController.Highlight(firstPauseButton);
         }
-
-        pauseMenu.SetActive(paused);
     }
 }

@@ -88,12 +88,14 @@ public class ShipController : MonoBehaviour
 
             GetJoystickAssignments();
 
-            if(joystickID == 0)
+            if (joystickID == 0)
             {
                 gameObject.SetActive(false);
             }
-
-            gameController.InvokeRespawn(this, 0f);
+            else
+            {
+                gameController.InvokeRespawn(this, 0f);
+            }
         }
 	}
 

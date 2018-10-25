@@ -89,6 +89,6 @@ public class InputController : MonoBehaviour
 
     public bool PauseIsPressed()
     {
-        return Input.GetButton(pauseKey);
+        return Input.GetButtonDown(pauseKey);
     }
 }
