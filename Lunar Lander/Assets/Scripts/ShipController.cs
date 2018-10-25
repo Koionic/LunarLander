@@ -183,7 +183,6 @@ public class ShipController : MonoBehaviour
                     if (shielded)
                     {
                         DisableShield();
-                        Land();
                     }
                     else if (!grounded)
                         Crash(collision);
@@ -267,25 +266,29 @@ public class ShipController : MonoBehaviour
     void EnableShield()
     {
         shielded = true;
-        Invoke("DisableShield", 10f);
     }
 
     void DisableShield()
     {
-        shielded = false;
-        CancelInvoke("DisableShield");
+        if (shielded)
+            shielded = false;
     }
 
     void EnableDoublePoints()
     {
         doublePoints = true;
-        Invoke("DisableDoublePoints", 10f);
     }
 
     void DisableDoublePoints()
     {
-        doublePoints = false;
-        CancelInvoke("DisableDoublePoints");
+        if (doublePoints)
+            doublePoints = false;
+    }
+
+    public void ClearPowerUps()
+    {
+        DisableShield();
+        DisableDoublePoints();
     }
 
     bool Landed(Collision collision)

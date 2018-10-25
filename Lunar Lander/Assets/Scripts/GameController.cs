@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
             int respawnNum = respawnQueue[0].GetJoystickID() - 1;
             GameObject spawningPlayer = players[respawnNum];
             spawningPlayer.SetActive(true);
-            spawningPlayer.transform.position = spawnPoints[respawnNum].position;
+            spawningPlayer.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
             spawningPlayer.transform.rotation = Quaternion.Euler(0,0,90);
             Rigidbody spawningPlayerRB = spawningPlayer.GetComponent<Rigidbody>();
             spawningPlayerRB.Sleep();

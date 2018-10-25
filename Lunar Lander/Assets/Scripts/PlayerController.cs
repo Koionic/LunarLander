@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     void AddPlayer(int position, int joystickNum)
     {
         //changes the text to display the player number
-        playerTexts[position].text = "Player " + joystickNum + " has joined";
+        playerTexts[position].text = "Player " + position + " has joined";
         //changes the text colour to the player colour
         playerTexts[position].color = playerColours[joystickNum];
         //changes the bool to declare the joystick has been assigned
