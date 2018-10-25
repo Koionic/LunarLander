@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour 
 {
 
-    string throttleInputKey, submitKey, cancelKey;
+    string throttleInputKey, submitKey, cancelKey, pauseKey;
 
     public bool debugMode;
 
@@ -21,12 +21,14 @@ public class InputController : MonoBehaviour
             throttleInputKey = "ThrottleMac";
             submitKey = "SubmitMac";
             cancelKey = "CancelMac";
+            pauseKey = "PauseMac";
         }
         else
         {
             throttleInputKey = "Throttle";
             submitKey = "Submit";
             cancelKey = "Cancel";
+            pauseKey = "Pause";
         }
     }
 
@@ -71,10 +73,8 @@ public class InputController : MonoBehaviour
         {
             return true;
         }
-        
-        return false;
 
-            
+        return false;
     }
 
     /// <summary>
@@ -85,5 +85,10 @@ public class InputController : MonoBehaviour
     public bool CancelIsPressed(int id)
     {
         return Input.GetButtonDown(cancelKey + id);
+    }
+
+    public bool PauseIsPressed()
+    {
+        return Input.GetButton(pauseKey);
     }
 }
