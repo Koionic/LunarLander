@@ -26,9 +26,13 @@ public class GameController : MonoBehaviour
 
     CameraController cameraController;
 
-    [SerializeField] GameObject pauseMenu, victoryScreen;
+    InputController inputController;
 
-    bool finished;
+    UIController uiController;
+
+    [SerializeField] GameObject pauseMenu, victoryScreen, firstPauseButton;
+
+    bool finished, paused;
 
 	void Awake ()
 	{
@@ -41,6 +45,10 @@ public class GameController : MonoBehaviour
         zoneController = FindObjectOfType<ZoneController>();
 
         cameraController = FindObjectOfType<CameraController>();
+
+        inputController = FindObjectOfType<InputController>();
+
+        uiController = FindObjectOfType<UIController>();
 	}
 
 	void Start () 
@@ -61,7 +69,10 @@ public class GameController : MonoBehaviour
 	
 	void Update ()
 	{
-		
+		if (inputController.PauseIsPressed())
+        {
+            
+        }
 	}
 
     public void InvokeRespawn(ShipController newShip)
@@ -141,5 +152,22 @@ public class GameController : MonoBehaviour
                 return false;
         }
         return true;
+    }
+
+    private void Pause()
+    {
+        if (paused)
+        {
+            paused = false;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            paused = true;
+            Time.timeScale = 0f;
+            uiController.Highlight(firstPauseButton);
+        }
+
+        pauseMenu.SetActive(paused);
     }
 }

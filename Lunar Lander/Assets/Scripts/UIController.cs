@@ -82,8 +82,9 @@ public class UIController : MonoBehaviour
         audioManager.PlaySound("SelectButton");
     }
 
-    public void Highlight()
+    public void Highlight(GameObject firstSelected)
     {
+        eventSystem.SetSelectedGameObject(firstSelected);
         audioManager.PlaySound("ChangeSelect");
     }
 }
