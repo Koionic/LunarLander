@@ -11,6 +11,7 @@ public class ShipController : MonoBehaviour
     Transform transform;
 
     [SerializeField] int playerID;
+    int joystickID;
 
     [SerializeField] Transform spawnPoint;
 
@@ -87,7 +88,7 @@ public class ShipController : MonoBehaviour
 
             GetJoystickAssignments();
 
-            if(playerID == 0)
+            if(joystickID == 0)
             {
                 gameObject.SetActive(false);
             }
@@ -107,7 +108,7 @@ public class ShipController : MonoBehaviour
         else if (!grounded)
         {
             //grabs the horizontal inputs from the joystick/keyboard
-            input = inputController.GetHorizontalInput(playerID);
+            input = inputController.GetHorizontalInput(joystickID);
 
             //rotates the ship around its z axis
             rb2d.angularVelocity = new Vector3(0, 0, -input);
@@ -130,9 +131,9 @@ public class ShipController : MonoBehaviour
                 scoreText.text = "Score: " + score;
 
             //boosts the rocket in the direction it is facing
-            if (inputController.GetThrottleInput(playerID) > 0f && fuel > 0)
+            if (inputController.GetThrottleInput(joystickID) > 0f && fuel > 0)
             {
-                float thruttleForce = rocketForce * inputController.GetThrottleInput(playerID);
+                float thruttleForce = rocketForce * inputController.GetThrottleInput(joystickID);
                 rb2d.AddForce(transform.up * thruttleForce);
 
                 fuel -= thruttleForce * Time.deltaTime * fuelMultiplier;
@@ -375,7 +376,7 @@ public class ShipController : MonoBehaviour
     {
         PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
 
-        playerID = playerInfo.GetJoystick(playerID - 1);
+        joystickID = playerInfo.GetJoystick(playerID - 1);
     }
 
     public void DeGround()
@@ -393,14 +394,19 @@ public class ShipController : MonoBehaviour
         isDead = false;
     }
 
+    public int GetJoystickID()
+    {
+        return joystickID;
+    }
+
+    public void SetJoystickID(int id)
+    {
+        joystickID = id;
+    }
+
     public int GetPlayerID()
     {
         return playerID;
-    }
-
-    public void SetPlayerID(int id)
-    {
-        playerID = id;
     }
 
     public bool IsOutOfFuel()

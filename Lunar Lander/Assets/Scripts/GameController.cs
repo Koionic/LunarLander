@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
 
     PlayerInfo playerInfo;
 
+    CameraController cameraController;
+
 	void Awake ()
 	{
         audioManager = AudioManager.instance;
@@ -33,6 +35,8 @@ public class GameController : MonoBehaviour
         shipControllers = FindObjectsOfType<ShipController>();
 
         zoneController = FindObjectOfType<ZoneController>();
+
+        cameraController = FindObjectOfType<CameraController>();
 	}
 
 	void Start () 
@@ -61,13 +65,14 @@ public class GameController : MonoBehaviour
     {
         respawnQueue.Add(newShip);
 
-        if (!newShip.IsOutOfFuel())
+        if (newShip.IsOutOfFuel())
+        {
+            cameraController.SetZoomedCamera(newShip.GetPlayerID());
+            respawnQueue.Remove(newShip);
+        }
+        else
         {
             Invoke("RespawnLanders", respawnRate);
-        }
-        else if (AreAllPlayersOut())
-        {
-            
         }
     }
 
@@ -76,7 +81,7 @@ public class GameController : MonoBehaviour
         foreach (ShipController player in shipControllers)
         {
             if (player.gameObject.activeInHierarchy )
-                players[player.GetPlayerID() - 1] = player.gameObject;
+                players[player.GetJoystickID() - 1] = player.gameObject;
         }
     }
 
@@ -84,7 +89,7 @@ public class GameController : MonoBehaviour
     {
         if (respawnQueue[0] != null)
         {
-            int respawnNum = respawnQueue[0].GetPlayerID() - 1;
+            int respawnNum = respawnQueue[0].GetJoystickID() - 1;
             GameObject spawningPlayer = players[respawnNum];
             spawningPlayer.SetActive(true);
             spawningPlayer.transform.position = spawnPoints[respawnNum].position;

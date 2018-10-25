@@ -169,4 +169,43 @@ public class CameraController : MonoBehaviour
     {
         mainMenuAnimator.Play("Lobby-Main");
     }
+
+    public void SetZoomedCamera(int num)
+    {
+        Camera newCam = null;
+
+        int cullingMask = 0;
+
+        switch(num)
+        {
+            case 1:
+                newCam = playerCam1;
+                cullingMask = 9;
+                break;
+
+            case 2:
+                newCam = playerCam2;
+                cullingMask = 10;
+                break;
+
+            case 3:
+                newCam = playerCam3;
+                cullingMask = 11;
+                break;
+
+            case 4:
+                newCam = playerCam4;
+                cullingMask = 12;
+                break;
+
+            default:
+                break;
+        }
+
+        if (newCam != null)
+        {
+            newCam.cullingMask |= 1 << 13;
+            newCam.cullingMask &= ~(1 << cullingMask);
+        }
+    }
 }

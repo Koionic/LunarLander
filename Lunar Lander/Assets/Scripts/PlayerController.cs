@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                     for (int i = 0; i < 4; i++)
                     {
                         //checks if the landers player id matches the joystick pressing cancel
-                        if (SlotIsTaken(i) && lobbyRoster[i].GetPlayerID() == shipNum)
+                        if (SlotIsTaken(i) && lobbyRoster[i].GetJoystickID() == shipNum)
                         {
                             RemovePlayer(i, shipNum);
                             break;
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         {
             if (SlotIsTaken(i))
             {
-                playerInfo.AssignJoystick(i, lobbyRoster[i].GetPlayerID());
+                playerInfo.AssignJoystick(i, lobbyRoster[i].GetJoystickID());
                 numOfPlayers++;
             }
             else
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         joystickLoggedIn[joystickNum - 1] = true;
         //creates a lander at the according lobby slot and assign its shipController to currentShip
         currentShip = Instantiate(landers[position], spawnPoints[position].position, Quaternion.identity).GetComponent<ShipController>();
-        currentShip.SetPlayerID(joystickNum);
+        currentShip.SetJoystickID(joystickNum);
         //adds the shipController to the lobby
         lobbyRoster[position] = currentShip;
     }
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
         {
             if (SlotIsTaken(i))
             {
-                RemovePlayer(i, lobbyRoster[i].GetPlayerID());
+                RemovePlayer(i, lobbyRoster[i].GetJoystickID());
             }
         }
     }
