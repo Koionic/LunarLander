@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
             sound[i].SetSource(_go.AddComponent<AudioSource>());
         }
 
-        PlaySound("MainTheme");
+        PlaySound("MultiplayerMusic");
     }
 
     public void PlaySound(string _name)

@@ -125,7 +125,7 @@ Material:
     - _UVSec: 0
     - _UnderlayDilate: -0.98
     - _UnderlayOffsetX: -1
-    - _UnderlayOffsetY: -0.9
+    - _UnderlayOffsetY: 0.231
     - _UnderlaySoftness: 1
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0

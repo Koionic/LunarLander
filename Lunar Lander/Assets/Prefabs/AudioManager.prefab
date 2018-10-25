@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1007927351100752}
+  m_IsPrefabAsset: 1
+--- !u!1 &1007927351100752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4315245570057602}
+  - component: {fileID: 114991386938457124}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4315245570057602
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007927351100752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114991386938457124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007927351100752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6411eb660629a28418e796e77cb4fdac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+  - clipName: Back
+    clip: {fileID: 8300000, guid: 3c913780517354cf7b5ea1432ef4b441, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: ChangeSelect
+    clip: {fileID: 8300000, guid: 97fc529db2d0c489db738d54aa69b479, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: PowerUp
+    clip: {fileID: 8300000, guid: 39c9000b2ad684e9fac544ac6c35a95b, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: SelectButton
+    clip: {fileID: 8300000, guid: b6f5b1dfec1094330ab84cb23a0eb6b1, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: SuccessfulLanding
+    clip: {fileID: 8300000, guid: f82e705b131d1492a9ae17f8e010cb47, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: Crash
+    clip: {fileID: 8300000, guid: bb798557d78814ac399d3ec5b3e69338, type: 3}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: RocketBoost (Not Completed)
+    clip: {fileID: 0}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: MultiplayerMusic
+    clip: {fileID: 8300000, guid: 193b47763e10b564e81b4c46b6d79981, type: 3}
+    audioMixerGroup: {fileID: 243882176320461390, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 1
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 1.52
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  - clipName: SinglePlayerMusic(Not Completed)
+    clip: {fileID: 0}
+    audioMixerGroup: {fileID: 243425319660540344, guid: 22493e7ee308efa4389b399ca6c88e65,
+      type: 2}
+    loop: 0
+    playOnAwake: 0
+    oneShot: 0
+    volume: 1
+    pitch: 0
+    spatial: 0
+    minDistance3Dsound: 0
+    maxDistance3DSound: 0
+  isMuted: 0
