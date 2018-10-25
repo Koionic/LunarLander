@@ -160,44 +160,31 @@ public class ShipController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-      /*  if ((collision.gameObject.tag == "Terrain") && Landed(collision))
+        if (!grounded)
         {
-            Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
-            Land();
-        }
-        if (collision.gameObject.tag == "Terrain" && !Landed(collision))
-        {   
-            if (shielded)
+            switch (collision.gameObject.tag)
             {
-                DisableShield();
-                Land();
-            }
-            else if (!grounded)
-                Crash(collision);
-        } */
-
-        switch (collision.gameObject.tag)
-        {
-            case ("Terrain"):
-                if(Landed(collision))
-                {
-                    Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
-                    Land();
-                }
-                else
-                {
-                    if (shielded)
+                case ("Terrain"):
+                    if (Landed(collision))
                     {
-                        DisableShield();
+                        Debug.Log("Landed with a velocity of " + MyMagnitute(collision));
+                        Land();
                     }
-                    else if (!grounded)
-                        Crash(collision);
-                }
-                return;
+                    else
+                    {
+                        if (shielded)
+                        {
+                            DisableShield();
+                        }
+                        else if (!grounded)
+                            Crash(collision);
+                    }
+                    return;
 
-            case ("TreeRock"):
-                Crash(collision);
-                return;
+                case ("TreeRock"):
+                    Crash(collision);
+                    return;
+            }
         }
     }
 
@@ -261,7 +248,7 @@ public class ShipController : MonoBehaviour
 
         grounded = true;
 
-        gameController.InvokeRespawn(this);
+        gameController.InvokeRespawn(this, false);
     }
 
     private void UpdateElements()
@@ -371,7 +358,7 @@ public class ShipController : MonoBehaviour
             isDead = true;
             totalCrashes++;
 
-            gameController.InvokeRespawn(this);
+            gameController.InvokeRespawn(this, true);
         }
     }
 

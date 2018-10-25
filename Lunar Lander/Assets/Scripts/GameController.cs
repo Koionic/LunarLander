@@ -79,11 +79,12 @@ public class GameController : MonoBehaviour
         }
 	}
 
-    public void InvokeRespawn(ShipController newShip)
+    public void InvokeRespawn(ShipController newShip, bool crashed)
     {
         respawnQueue.Add(newShip);
 
-        newShip.gameObject.SetActive(false);
+        if (crashed)
+            newShip.gameObject.SetActive(false);
 
         if (newShip.IsOutOfFuel())
         {
@@ -104,7 +105,7 @@ public class GameController : MonoBehaviour
     {
         respawnQueue.Add(newShip);
 
-        newShip.gameObject.SetActive(false);
+
 
         if (newShip.IsOutOfFuel())
         {

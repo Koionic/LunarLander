@@ -901,7 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1259417068}
     m_SelectOnDown: {fileID: 982838482}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -2189,6 +2189,41 @@ Prefab:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114752546862893820, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114752546862893820, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 403850014}
+    - target: {fileID: 114752546862893820, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1642837333}
+    - target: {fileID: 114749103978050786, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749103978050786, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 752962256}
+    - target: {fileID: 114749103978050786, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 680179836}
+    - target: {fileID: 114169370581794840, guid: e87c25810b8b6e64fb5105dcb355f2a1,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 752962256}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87c25810b8b6e64fb5105dcb355f2a1, type: 2}
   m_IsPrefabAsset: 0
@@ -2272,7 +2307,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 982838482}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 570299082}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
