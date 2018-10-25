@@ -39,7 +39,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] float explosionRadius = 5.0F;
     [SerializeField] float explosionPower = 10.0F;
 
-    [SerializeField] GameObject flame;
+    [SerializeField] GameObject flame, shield;
     [SerializeField] GameObject destroyedModel;
 
     [SerializeField] Text xMoveText, yMoveText, fuelText, scoreText;
@@ -56,7 +56,7 @@ public class ShipController : MonoBehaviour
 
     ZoneController zoneController;
 
-    bool isDead = false, shielded, doublePoints, grounded;
+    bool isDead = false, thrusting, shielded, doublePoints, grounded;
 
     [SerializeField] Transform groundTransform;
 
@@ -107,53 +107,52 @@ public class ShipController : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
-            
+
         }
-        else if (!grounded)
+        else
         {
-            //grabs the horizontal inputs from the joystick/keyboard
-            input = inputController.GetHorizontalInput(joystickID);
+            if (!grounded)
+            {
+                //grabs the horizontal inputs from the joystick/keyboard
+                input = inputController.GetHorizontalInput(joystickID);
 
-            //rotates the ship around its z axis
-            rb2d.angularVelocity = new Vector3(0, 0, -input);
+                //rotates the ship around its z axis
+                rb2d.angularVelocity = new Vector3(0, 0, -input);
 
+                //updates the ui
+                if (xMoveText != null)
+                    xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
+
+                if (yMoveText != null)
+                    yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
+
+                if (fuelText != null)
+                {
+                    fuelText.text = "Fuel Remaining: " + (fuel > 0 ? (int)fuel : 0);
+                }
+
+                if (scoreText != null)
+                    scoreText.text = "Score: " + score;
+
+                //boosts the rocket in the direction it is facing
+                if (inputController.GetThrottleInput(joystickID) > 0f && fuel > 0)
+                {
+                    float thruttleForce = rocketForce * inputController.GetThrottleInput(joystickID);
+                    rb2d.AddForce(transform.up * thruttleForce);
+
+                    fuel -= thruttleForce * Time.deltaTime * fuelMultiplier;
+
+                    thrusting = true;
+
+                    if (fuel <= 0)
+                        outOfFuel = true;
+                }
+                else
+                    thrusting = false;
+            }
             ManageCamera();
-
-            //updates the ui
-            if (xMoveText != null)
-                xMoveText.text = "Horizontal Velocity: " + (int)(rb2d.velocity.x * velocityUIMultiplier);
-
-            if (yMoveText != null)
-                yMoveText.text = "Vertical Velocity: " + (int)(rb2d.velocity.y * -velocityUIMultiplier);
-
-            if (fuelText != null)
-            {
-                fuelText.text = "Fuel Remaining: " + (fuel > 0 ? (int)fuel : 0);
-            }
-
-            if (scoreText != null)
-                scoreText.text = "Score: " + score;
-
-            //boosts the rocket in the direction it is facing
-            if (inputController.GetThrottleInput(joystickID) > 0f && fuel > 0)
-            {
-                float thruttleForce = rocketForce * inputController.GetThrottleInput(joystickID);
-                rb2d.AddForce(transform.up * thruttleForce);
-
-                fuel -= thruttleForce * Time.deltaTime * fuelMultiplier;
-
-                if (fuel <= 0)
-                    outOfFuel = true;
-
-                if (flame != null)
-                    flame.SetActive(true);
-            }
-            else
-            {
-                if (flame != null)
-                    flame.SetActive(false);
-            }
         }
+        UpdateElements();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -260,6 +259,15 @@ public class ShipController : MonoBehaviour
         grounded = true;
 
         gameController.InvokeRespawn(this);
+    }
+
+    private void UpdateElements()
+    {
+        if (flame != null)
+            flame.SetActive(thrusting);
+
+        if (shield != null)
+            shield.SetActive(shielded);
     }
 
     void AddFuel()

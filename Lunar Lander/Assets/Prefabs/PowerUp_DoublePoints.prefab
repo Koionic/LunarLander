@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4539160550713004}
-  - component: {fileID: 65286648381604060}
   - component: {fileID: 114580173498557060}
+  - component: {fileID: 65706493030651572}
   m_Layer: 0
   m_Name: PowerUp_DoublePoints
   m_TagString: DoublePoints
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23686799263241298}
   m_Layer: 0
   m_Name: pPyramid1
-  m_TagString: Untagged
+  m_TagString: DoublePoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217447094786002}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.074485525, z: 0}
+  m_LocalPosition: {x: -0, y: 1, z: 0}
   m_LocalScale: {x: 13.416672, y: 13.416672, z: 13.416672}
   m_Children: []
   m_Father: {fileID: 4539160550713004}
@@ -110,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123349233441094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.743, y: -0.013, z: -0.195}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: -104.73474, y: 28.74844, z: -76.6141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4017436214125962}
   - {fileID: 4008399932654222}
@@ -125,13 +125,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127353742681412}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.03, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.4073761}
   m_Children: []
   m_Father: {fileID: 4539160550713004}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23686799263241298
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -216,7 +216,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217447094786002}
   m_Mesh: {fileID: 4300002, guid: 93581ff76fa598449b8c297d32be33ed, type: 3}
---- !u!65 &65286648381604060
+--- !u!65 &65706493030651572
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,8 +226,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.0492067, y: 2.4699306, z: 4.4952316}
+  m_Center: {x: 0, y: 0.20927715, z: 0}
 --- !u!114 &114580173498557060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,4 +239,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd714c9d19d8ec74caf0871cce445a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 4
+  lifeTime: 8

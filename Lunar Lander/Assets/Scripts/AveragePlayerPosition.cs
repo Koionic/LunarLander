@@ -6,9 +6,22 @@ public class AveragePlayerPosition : MonoBehaviour
 {
     [SerializeField] GameObject[] players;
 
+    [SerializeField] Transform defaultCameraTransform;
+
+    Vector3 lastPosition;
+
+    bool onePlayer;
+
 	void Start ()
     {
-		
+        PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
+        if (playerInfo != null)
+        {
+            if (playerInfo.GetNumberOfPlayers() == 1)
+            {
+                onePlayer = true;
+            }
+        }
 	}
 	
 	void Update ()
@@ -22,14 +35,17 @@ public class AveragePlayerPosition : MonoBehaviour
         }
 
         transform.position = GetAverageVector(positions);
-
     }
 
     private Vector3 GetAverageVector(List<Vector3> positions)
     {
         if (positions.Count == 0)
         {
-            return Vector3.zero;
+            if (onePlayer)
+            {
+                return lastPosition;
+            }
+            return defaultCameraTransform.position;
         }
 
         Vector3 averageVector = Vector3.zero;
@@ -39,6 +55,8 @@ public class AveragePlayerPosition : MonoBehaviour
             averageVector += pos;
         }
 
-        return (averageVector / positions.Count);
+        lastPosition = averageVector / positions.Count;
+
+        return lastPosition;
     }
 }
