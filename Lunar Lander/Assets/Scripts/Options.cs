@@ -11,38 +11,52 @@ public class Options : MonoBehaviour
 
     private AudioManager audioManager;
 
-    [SerializeField]
-    private Toggle muteToggle;
+    private UIController uiController;
+
+    [SerializeField] Toggle muteToggle;
+    [SerializeField] Slider masterSlider, musicSlider, sfxSlider;
 
     void Start()
     {
+        uiController = FindObjectOfType<UIController>();
+
         audioManager = AudioManager.instance;
 
-        if (audioManager.isMuted)
+        if (audioManager.muted)
         {
             muteToggle.isOn = true;
         }
-
     }
 
     // links options slider to audiomixer groups
-    public void SetVolumeMaster(float volume)
+    public void SetMasterVolume()
     {
-        audioMixer.SetFloat("Master", volume);
+        audioMixer.SetFloat("Master", Mathf.Log(masterSlider.value) * 20);
     }
-    public void SetVolumeMusic(float volume)
+
+    public void SetMusicVolume()
     {
-        audioMixer.SetFloat("Music", volume);
+        audioMixer.SetFloat("Music", Mathf.Log(musicSlider.value) * 20);
     }
-    public void SetVolumeSFX(float volume)
+
+    public void SetSFXVolume()
     {
-        audioMixer.SetFloat("SFX", volume);
+        audioMixer.SetFloat("SFX", Mathf.Log(sfxSlider.value) * 20);
     }
 
     // pauses audio listeners to mute all audio
-    public void Mute()
+    public void MuteToggle()
     {
-        AudioListener.pause = !AudioListener.pause;
-        audioManager.isMuted = !audioManager.isMuted;
+        if(!audioManager.muted)
+        {
+            AudioListener.pause = !AudioListener.pause;
+            audioManager.muted = false;
+        }
+
+        if (audioManager.muted)
+        {
+            AudioListener.pause = AudioListener.pause;
+            audioManager.muted = true;
+        }
     }
 }

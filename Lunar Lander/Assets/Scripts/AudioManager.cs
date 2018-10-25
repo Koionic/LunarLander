@@ -12,10 +12,9 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance; 
 
-    [SerializeField]
-    SoundArray[] sound; 
+    [SerializeField] SoundArray[] sound; 
 
-    public bool isMuted = false; 
+    public bool muted = false;
 
     void Awake()
     {

@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     [Header("Place Selectables Here")]
     //Add a new array for any new menu screens. You can place any type of ui element in here
-    [SerializeField] Selectable[] mainSelectables, optionsSelectables;
+    public Selectable[] mainSelectables, optionsSelectables;
 
     [SerializeField] GameObject firstOptionsButton;
 
