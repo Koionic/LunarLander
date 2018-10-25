@@ -122,22 +122,21 @@ public class CameraController : MonoBehaviour
             }
                     
         }
-
-        if(!camera3)
-        {
-            rejectedCameras.Add(camObjs[4]);
-        } 
     }
 
     void OneCamera()
     {
         playerCam1.rect = fullScreen;
+
+        rejectedCameras.Add(camObjs[4]);
     }
 
     void TwoCameras()
     {
         playerCam1.rect = topHalf;
         playerCam2.rect = bottomHalf;
+
+        rejectedCameras.Add(camObjs[4]);
     }
 
     void ThreeCameras()
@@ -154,6 +153,8 @@ public class CameraController : MonoBehaviour
         playerCam2.rect = topRight;
         playerCam3.rect = bottomLeft;
         playerCam4.rect = bottomRight;
+
+        rejectedCameras.Add(camObjs[4]);
     }
 
     void ClearUnusedCameras()

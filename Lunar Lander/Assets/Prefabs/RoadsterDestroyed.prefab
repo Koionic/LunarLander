@@ -238,7 +238,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560962976795652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.82, y: 2.53, z: 0}
+  m_LocalPosition: {x: 17.947376, y: 37.813168, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4698362651409378}
@@ -715,7 +715,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003586376172164}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -727,7 +727,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808490359061076}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -739,7 +739,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031391786315492}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -751,7 +751,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044817459443562}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -763,7 +763,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448195251704194}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -775,7 +775,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849706393276862}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 880d9487e68c2d14f89b26d6e513453e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

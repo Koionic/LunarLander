@@ -307,7 +307,7 @@ public class ShipController : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, close ? closeTerrainRange : farTerrainRange);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Terrain"))
+            if (collider.CompareTag("Terrain") || (collider.CompareTag("TreeRock")))
             {
                 return true;
             }
